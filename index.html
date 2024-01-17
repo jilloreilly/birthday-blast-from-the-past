@@ -9,6 +9,40 @@
 </head>
 <body>
 
+  <header>
+    <h1>Birthday Blast From The Past!</h1>
+  </header>
+
+
+  <main>
+    <section id="search-area">
+      <div class="row">
+        <aside class="col-lg-3 pb-3">
+          <h2 id="form-heading" class="mt-1 h3 form-label">
+            Search for a City:
+          </h2>
+          <form id="search-form" class="form">
+            <div class="form-inline form-group">
+              <div class="input-group">
+                <input class="form-input form-control weather-search rounded" type="text" id="search-input" placeholder="Enter location"
+                  aria-labelledby="form-heading" aria-controls="today forecast" />
+                <div class="input-group-append mt-3">
+                  <button type="submit" class="btn search-button btn-primary" id="search-button" aria-label="submit search">
+                    Search
+                  </button>
+                  <hr class="hr weather-hr" />
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="list-group" id="history"></div>
+        </aside>
+    </section>
+
+
+    
+
+  </main>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
