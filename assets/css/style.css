@@ -1,11 +1,117 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
   }
   
+
+/*---------------------------------------*/
+
+/* Testing bootstrap */
+.row {
+    margin: 0px 5%;
+}
+
+.col-sm-2 {
+    border-style: solid;
+    border-color: #3939d2;
+}
+
+.col-sm-5 {
+    border-style: solid;
+    border-color: #3939d2;
+}
+
+
+/*---------------------------------------*/
+
+/* Testing media queries */
+
+.wrapper {
+    border: 2px solid #3939d2;
+    border-radius: 5px;
+    max-width: 940px;
+    margin: 0 5%;
+}
+
+.wrapper > div {
+    border: 2px solid #ffa94d;
+    border-radius: 5px;
+    background-color: #ffd8a8;
+    padding: 1em;
+    color: #d9480f;
+}
+
+#search-area {
+    grid-area: sA;
+}
+
+#current-birthday-text {
+    grid-area: cBT;
+}
+
+#current-birthday-selected {
+    grid-area: cBS;
+}
+
+#movie-list {
+    grid-area: mL;
+}
+
+#youtube-trailer {
+    grid-area: yT;
+}
+
+.wrapper {
+    display: grid;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "sA"
+    "cBT"
+    "cBS"
+    "mL"
+    "yT";
+}
+
+@media (min-width: 500px) {
+    .wrapper {
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-areas: 
+        "sA sA sA cBT cBS cBS cBS cBS cBS"
+        "sA sA sA  mL  mL  mL  mL  mL  mL"
+        "sA sA sA  yT  yT  yT  yT  yT  yT";
+    }
+}
+
+/*---------------------------------------*/
+
+.spacer {
+    margin: 50px;
+}
+
+/*---------------------------------------*/
   /* Page Grid */
   
-  #page-grid {
+/*@media (min-width: 500px) {
+    .wrapper {
+        margin: 0px 5%;
+        display: grid;
+        min-height: 500px;
+        height: 70vh;
+        grid-template-rows: 10% 45% 45%;
+        grid-template-columns: 30% 10% 60%;
+        grid-template-areas:
+        "searchArea currentBirthdayText currentBirthdaySelected"
+        "searchArea movieList movieList"
+        "searchArea youtubeTrailer youtubeTrailer";
+      }
+}
+
+  .wrapper {
     margin: 0px 5%;
     display: grid;
     min-height: 500px;
@@ -19,38 +125,44 @@ body {
   }
   
 
-/* Left block, step 1: search for your birthday */
+/* Left block, step 1: search for your birthday*/ 
 
   #search-area {
-    grid-area: searchArea;
+    grid-area: sA;
     background-color: blueviolet;
   }
 
-/* Current birthday text*/
+/* Current birthday text */
   
   #current-birthday-text {
-    grid-area: currentBirthdayText;
+    grid-area: cBT;
   }
 
-/* Current birthday date selected */ 
+/* Current birthday date selected  */
   
   #current-birthday-selected {
-    grid-area: currentBirthdaySelected;
+    grid-area: cBS;
     background-color: green;
     justify-content: space-around;
     cursor: pointer;
   }
 
+  /* Movie information */
+
   #movie-list {
-    grid-area: movieList;
+    grid-area: mL;
     background-color: #FF6200;
   }
 
+  /* Youtube Trailer */
+
   #youtube-trailer {
-    grid-area: youtubeTrailer;
+    grid-area: yT;
     background-color: aqua;
   }
 
+
+  /*
   
   #headline {
     background-color: rgba(255,255,255,0.8);
@@ -80,104 +192,5 @@ body {
     color: white;
     font-size: 18px;
     border-bottom: 5px solid #FF6200;
-  }
-  
-  
-  /* Navigation CSS */
-  /* CHECK OUT THIS CODE BELOW IF YOU WANT TO GET A REFRESHER ON FLEX */
-  
-  #navBar {
-    display: flex;
-    flex-direction: row;
-    margin: 0px 5%;
-  }
-  #navBar h1 {
-    width: 25%;
-    font-weight: 500;
-  }
-  #navigation {
-    display: flex;
-    width: 50%;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  #navigation p {
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .icons {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 25%;
-  }
-  .icons img {
-    margin: 15px;
-    cursor: pointer;
-  }
-  .highlight {
-    color: #FF6200;
-    font-weight: 700;
-  }
-  
-  /* Typography CSS */
-  
-  h2 {
-    font-size: 60px;
-    margin: 0px 0px;
-    color: #FF6200;
-  }
-  
-  h3 {
-    font-size: 32px;
-    font-weight: 300;
-    margin: 0px 0px;
-  }
-  
-  h4 {
-    color: white;
-    font-weight: 400;
-    font-size: 22px;
-  }
-  
-  
-  #headline p {
-    max-width: 350px;
-    font-size: 16px;
-    font-weight: 300;
-    margin: 0px 0px;
-    color: #636364;
-  }
-  
-  @media only screen and (max-width: 1000px) {
-    #navigation {
-      display: none;
-    }
-    .icons {
-      margin-left: auto;
-    }
-  }
-  
-  @media only screen and (max-width: 600px) {
-    #headline {
-      position: static;
-      margin: 20px;
-    }
-    #heroGrid {
-      grid-template-areas:
-      "featuredProduct featuredProduct"
-      "secondaryProduct CTA";
-    }
-    #categoryGrid {
-      grid-template-rows: 300px 300px 300px 300px 300px;
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "bookcases"
-        "bedroom"
-        "patio"
-        "couches"
-        "desks"
-      ;
-    }
   }
   
