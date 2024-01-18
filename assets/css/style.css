@@ -1,69 +1,100 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
+    background-color: rgb(122, 219, 219);
   }
   
-
-/*---------------------------------------*/
-
-/* Testing bootstrap */
-.row {
-    margin: 0px 5%;
+#header {
+    justify-content: center;
+    margin: 20px;
 }
-
-.col-sm-2 {
-    border-style: solid;
-    border-color: #3939d2;
-}
-
-.col-sm-5 {
-    border-style: solid;
-    border-color: #3939d2;
-}
-
-
-/*---------------------------------------*/
-
-/* Testing media queries */
 
 .wrapper {
     border: 2px solid #3939d2;
     border-radius: 5px;
-    max-width: 940px;
     margin: 0 5%;
-}
+    /*min-height: 0px;
+    height: 0vh;*/
+}    
 
 .wrapper > div {
-    border: 2px solid #ffa94d;
+    border: 2px solid #ff4d94;
     border-radius: 5px;
-    background-color: #ffd8a8;
     padding: 1em;
-    color: #d9480f;
-}
+}    
+
+/* Search area */
 
 #search-area {
     grid-area: sA;
+    background-color: rgb(200, 169, 230);
+}    
+
+#search-area .box {
+    border: 2px solid black;
+    border-radius: 25px;
+    margin: 5px;
+    padding: 30px;
 }
+
+#search-area .input {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    height: 3rem;
+    line-height: 3rem;
+}
+
+
+#search-area .buttons .button {
+    border: 2px solid black;
+    border-radius: 25px;
+    margin: 5px;
+}
+
+/* Current birthday text */
 
 #current-birthday-text {
     grid-area: cBT;
-}
+    background-color: rgb(205, 228, 169);
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+}    
+
+/* Current birthday date selected */
 
 #current-birthday-selected {
     grid-area: cBS;
-}
+    background-color: rgb(166, 227, 166);
+    justify-content: space-around;
+}    
 
-#movie-list {
+#current-birthday-selected #displayed {
+    border: 2px solid black;
+}    
+
+
+/* Movie information */
+
+#movie-info {
     grid-area: mL;
-}
+    background-color: #dbaf94;
+}    
+
+/* Youtube Trailer */
 
 #youtube-trailer {
     grid-area: yT;
-}
+    background-color: rgb(228, 247, 124);
+}    
+
+/* Other films out same year */
+
+#other-films {
+    grid-area: oF;
+    background-color: rgb(108, 198, 231);
+} 
 
 .wrapper {
     display: grid;
@@ -74,123 +105,25 @@ body {
     "cBT"
     "cBS"
     "mL"
-    "yT";
-}
+    "yT"
+    "oF";
+}    
 
-@media (min-width: 500px) {
+@media (min-width: 800px) {
     .wrapper {
         grid-template-columns: repeat(9, 1fr);
         grid-template-areas: 
         "sA sA sA cBT cBS cBS cBS cBS cBS"
         "sA sA sA  mL  mL  mL  mL  mL  mL"
-        "sA sA sA  yT  yT  yT  yT  yT  yT";
-    }
-}
+        "sA sA sA  mL  mL  mL  mL  mL  mL"
+        "sA sA sA  yT  yT  yT  yT  yT  yT"
+        "sA sA sA  oF  oF  oF  oF  oF  oF";
+    }    
+}    
 
-/*---------------------------------------*/
 
 .spacer {
     margin: 50px;
-}
-
-/*---------------------------------------*/
-  /* Page Grid */
-  
-/*@media (min-width: 500px) {
-    .wrapper {
-        margin: 0px 5%;
-        display: grid;
-        min-height: 500px;
-        height: 70vh;
-        grid-template-rows: 10% 45% 45%;
-        grid-template-columns: 30% 10% 60%;
-        grid-template-areas:
-        "searchArea currentBirthdayText currentBirthdaySelected"
-        "searchArea movieList movieList"
-        "searchArea youtubeTrailer youtubeTrailer";
-      }
-}
-
-  .wrapper {
-    margin: 0px 5%;
-    display: grid;
-    min-height: 500px;
-    height: 70vh;
-    grid-template-rows: 10% 45% 45%;
-    grid-template-columns: 30% 10% 60%;
-    grid-template-areas:
-    "searchArea currentBirthdayText currentBirthdaySelected"
-    "searchArea movieList movieList"
-    "searchArea youtubeTrailer youtubeTrailer";
-  }
-  
-
-/* Left block, step 1: search for your birthday*/ 
-
-  #search-area {
-    grid-area: sA;
-    background-color: blueviolet;
-  }
-
-/* Current birthday text */
-  
-  #current-birthday-text {
-    grid-area: cBT;
-  }
-
-/* Current birthday date selected  */
-  
-  #current-birthday-selected {
-    grid-area: cBS;
-    background-color: green;
-    justify-content: space-around;
-    cursor: pointer;
-  }
-
-  /* Movie information */
-
-  #movie-list {
-    grid-area: mL;
-    background-color: #FF6200;
-  }
-
-  /* Youtube Trailer */
-
-  #youtube-trailer {
-    grid-area: yT;
-    background-color: aqua;
-  }
+}    
 
 
-  /*
-  
-  #headline {
-    background-color: rgba(255,255,255,0.8);
-    border-bottom: 5px solid #FF6200;
-    position: absolute;
-    right: -50px;
-    top: 100px;
-    padding: 25px;
-    max-width: 550px;
-    z-index: 100;
-  }
-  
-  .pageGridArea {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    align-items: center;
-    display: flex;
-    position: relative;
-  }
-  
-  
-  .heading {
-    background-color: rgba(0,0,0,0.7);
-    padding: 15px;
-    height: 25px;
-    color: white;
-    font-size: 18px;
-    border-bottom: 5px solid #FF6200;
-  }
-  
