@@ -146,3 +146,40 @@ function createFrame(videoId) {
 
   let iFramePlayer = $('#youtube-trailer').html(videoFrame)
 }
+
+
+
+// Save search years to local storage -----------------------------------------------------------------------
+
+// Adds search term to local storage
+function addToSearchHistory(searchTerm) {
+  let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+  searchHistory.push(searchTerm);
+  if (searchHistory.length > 10){
+      searchHistory.shift()
+  }
+  localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+  // updateSearchHistoryDisplay(); 
+
+}
+
+// updates search history on page
+function updateSearchHistoryDisplay() {
+  let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+  let searchHistoryEl = $('#history');
+  
+  searchHistoryEl.empty();
+  //looping through the search history
+  for (let i = 0; i < searchHistory.length; i++) {
+      const pastSearch = searchHistory[i];
+      let searchHistoryBtn = $('<button>').text(pastSearch);
+      searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
+      searchHistoryEl.append(searchHistoryBtn);
+  }
+}
+
+
+// Call to updateSearchHistoryDisplay on document ready
+$(document).ready(function () {
+  updateSearchHistoryDisplay();
+});
