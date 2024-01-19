@@ -45,6 +45,7 @@ $('#search-button').on('click', function(e) {
     return
   };
   fetchMovie(year);
+  addToSearchHistory(year)
 });
 
 
@@ -69,11 +70,46 @@ $('#search-button').on('click', function(e) {
   // Use regex
 
 
-// Save search years to local storage
+
 
 // !User dayjs to format release date
 
-//Second Youtube API variable
+// Save search years to local storage -----------------------------------------------------------------------
+
+// Adds search term to local storage
+function addToSearchHistory(searchTerm) {
+  let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+  searchHistory.push(searchTerm);
+  if (searchHistory.length > 10){
+      searchHistory.shift()
+  }
+  localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+  // updateSearchHistoryDisplay(); 
+  // console.log(searchHistory)
+}
+
+// updates search history on page
+function updateSearchHistoryDisplay() {
+  let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+  let searchHistoryEl = $('#history');
+  
+  searchHistoryEl.empty();
+  //looping through the search history
+  for (let i = 0; i < searchHistory.length; i++) {
+      const pastSearch = searchHistory[i];
+      let searchHistoryBtn = $('<button>').text(pastSearch);
+      searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
+      searchHistoryEl.append(searchHistoryBtn);
+  }
+}
+
+// Call to updateSearchHistoryDisplay on document ready
+$(document).ready(function () {
+  updateSearchHistoryDisplay();
+});
+
+
+//Second Youtube API----------------------------------------------------------------------------------------------
 const key = 'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
 
 
@@ -101,8 +137,6 @@ function getVideo(movie) {
         )
 }
 
-
-
 //function to add video to page
 function createFrame(videoId) {
 
@@ -115,5 +149,34 @@ function createFrame(videoId) {
     let iFramePlayer = $('#youtube-trailer').html(videoFrame)
 }
 
-getVideo()
+
+
+// Movie Carousel link------------------------------------------------------------------------------------
+
+// function getCarouselLink(movieName) {
+//   let movie = movieName
+
+//   const key = 'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
+//   let movieTitle = `${movie} trailer`
+//   // Youtube query url
+//   let queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${movieTitle}&key=${key}`
+//   // console.log(queryURL)
+
+//   fetch(queryURL)
+//       .then(function (response) {
+//           return response.json()
+//       })
+//       .then(function (data) {
+//           // console log to ensure correct item selected
+//           console.log(data)
+//           console.log(`Video Data: ${data.items[0].id.videoId}`);
+//           // variable to hold the first videos specific video ID
+//           let videoId = data.items[0].id.videoId
+//           let videoLink = `http://www.youtube.com/embed/${videoId}?enablejsapi=1`
+//           $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`);
+
+//       })
+//     }
+
+
 
