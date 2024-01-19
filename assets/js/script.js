@@ -40,7 +40,7 @@ function displayMovieInfo(data) {
   const movieTitle = $('<h3>').text(movie.original_title);
   const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
   const movieOverview = $('<p>').text(movie.overview);
-  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`);
+  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded');
 
   //Print elements to page
   $(movieInfoEl).append(movieTitle, movieReleaseDate, movieOverview, moviePoster);
