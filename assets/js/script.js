@@ -160,7 +160,7 @@ function addToSearchHistory(searchTerm) {
   }
   localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
   // updateSearchHistoryDisplay(); 
-  // console.log(searchHistory)
+
 }
 
 // updates search history on page
@@ -177,6 +177,7 @@ function updateSearchHistoryDisplay() {
       searchHistoryEl.append(searchHistoryBtn);
   }
 }
+
 
 // Call to updateSearchHistoryDisplay on document ready
 $(document).ready(function () {
