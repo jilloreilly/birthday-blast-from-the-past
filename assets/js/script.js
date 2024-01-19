@@ -75,6 +75,7 @@ $('#search-button').on('click', function (e) {
     return
   };
   fetchMovie(year);
+  addToSearchHistory(year)
 });
 
 
@@ -98,18 +99,13 @@ $('#search-button').on('click', function (e) {
   // check if they are numbers/integers
   // check that year is not greater than 2024
   // check that year isnt earlier than 115 years ago?
-  // Use regex?
-
-// Youtube API - Sarah E
-  // Embed youtube move trailer using iFrame
+  // Use regex
 
 // Save search years to local storage - Sarah E
 
-// !User dayjs to format release date - Jill O
+// Save search years to local storage
 
-// Display a carousel of other films from same year? - Sarah E
-  // Look at bootstrap carousel?
-  // Loop through movie array [1-5]?
+// !User dayjs to format release date
 
 //Second Youtube API variable
 const key = 'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
@@ -139,8 +135,6 @@ function getVideo(movie) {
     )
 }
 
-
-
 //function to add video to page
 function createFrame(videoId) {
 
@@ -152,5 +146,3 @@ function createFrame(videoId) {
 
   let iFramePlayer = $('#youtube-trailer').html(videoFrame)
 }
-
-
