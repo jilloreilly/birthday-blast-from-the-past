@@ -149,7 +149,7 @@ function createFrame(videoId) {
     let iFramePlayer = $('#youtube-trailer').html(videoFrame)
 }
 
-getVideo()
+
 
 // Movie Carousel link------------------------------------------------------------------------------------
 
