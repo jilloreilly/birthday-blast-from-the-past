@@ -10,7 +10,7 @@ function fetchMovie(search) {
 
   fetch(queryURL)
     .then(function (response) {
-      return response.json(); // Returned data is an array of 20 films sorted in decreasing popularity
+      return response.json(); // Returned data is an array of 20 films sorted by decreasing popularity
     })
     .then(function (data) {
       console.log(data);
@@ -51,7 +51,7 @@ function displayMovieInfo(data) {
 // Function to display additional movie data (Runtime, genre, tagline)
 function extraMovieData(movieData) {
   //const movieRating = $('<p>').text();  
-  const movieRuntime = $('<p>').text(`Runtime: ${movieData.runtime}`);
+  const movieRuntime = $('<p>').text(`Runtime: ${movieData.runtime} minutes `);
   const genreArr  = movieData.genres;
   const listGenre = $('<ul>');
   const movieTagline = $('<p>').text(movieData.tagline);
@@ -62,7 +62,8 @@ function extraMovieData(movieData) {
   }
 
   // Print elements to page
-  $(movieInfoEl).append(movieRuntime, listGenre, movieTagline);
+  $(movieInfoEl).append(movieRuntime, listGenre);
+  $(movieTagline).insertAfter('#movie-info h3');
 }
 
 // Event listener on search button
