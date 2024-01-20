@@ -7,6 +7,7 @@ function fetchMovie(search) {
   let queryURL = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&primary_release_year=${search}&sort_by=popularity.desc&year=${search}&api_key=${movieApiKey}`;
 
   $('#search-input').val('');
+  $('.error').addClass('hide');
 
   fetch(queryURL)
     .then(function (response) {
@@ -70,11 +71,27 @@ function extraMovieData(movieData) {
 $('#search-button').on('click', function (e) {
   e.preventDefault();
   const year = $('#search-input').val().trim();
+  let numbers = /^[0-9]+$/;
 
-  // Only run fetchMovie() if #search-input is not empty
+  // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
   if (!year) {
+    console.log('Empty');
+    const errorEmptyYear = $('<p>').addClass('error').text('Please enter YYYY');
+    $('#search-form').append(errorEmptyYear);
     return
-  };
+  } else if (!(year.match(numbers))) {
+      console.log('Not a number!');
+      const errorNan = $('<p>').addClass('error').text('Please enter numbers only');
+      $('#search-form').append(errorNan);
+      return
+  } else if ((year > 2024) || (year < 1900 )) {
+    console.log('Too early or too late');
+    const errorYears = $('<p>').addClass('error').text('Please enter a year between 1900 and 2024');
+      $('#search-form').append(errorYears);
+    return
+  }    
+  
+
   fetchMovie(year);
   addToSearchHistory(year)
 });
