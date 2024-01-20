@@ -7,13 +7,13 @@ function fetchMovie(search) {
   let queryURL = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&primary_release_year=${search}&sort_by=popularity.desc&year=${search}&api_key=${movieApiKey}`;
 
   $('#search-input').val('');
+  $('.error').addClass('hide');
 
   fetch(queryURL)
     .then(function (response) {
-      return response.json(); // Returned data is an array of 20 films sorted in decreasing popularity
+      return response.json(); // Returned data is an array of 20 films sorted by decreasing popularity
     })
     .then(function (data) {
-      console.log(data);
       displayMovieInfo(data);
       getCarouselMovies(data);
       const movieID = data.results[0].id;
@@ -25,7 +25,6 @@ function fetchMovie(search) {
           return response.json()
         })
         .then(function (movieData) {
-          console.log(movieData);
           extraMovieData(movieData);    
         })
     });
@@ -36,12 +35,10 @@ function displayMovieInfo(data) {
   $(movieInfoEl).empty(); // Remove previous film data from page
 
   const movie = data.results[0];
-  console.log(`data.results: ${movie}`);
-
   const movieTitle = $('<h3>').text(movie.original_title);
-  const movieReleaseDate = $('<p>').text(dayjs(movie.release_date).format('DD/MM/YYYY'));
+  const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
   const movieOverview = $('<p>').text(movie.overview);
-  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`);
+  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded');
 
   //Print elements to page
   $(movieInfoEl).append(movieTitle, movieReleaseDate, movieOverview, moviePoster);
@@ -53,7 +50,7 @@ function displayMovieInfo(data) {
 // Function to display additional movie data (Runtime, genre, tagline)
 function extraMovieData(movieData) {
   //const movieRating = $('<p>').text();  
-  const movieRuntime = $('<p>').text(`Runtime: ${movieData.runtime}`);
+  const movieRuntime = $('<p>').text(`Runtime: ${movieData.runtime} minutes `);
   const genreArr  = movieData.genres;
   const listGenre = $('<ul>');
   const movieTagline = $('<p>').text(movieData.tagline);
@@ -64,18 +61,34 @@ function extraMovieData(movieData) {
   }
 
   // Print elements to page
-  $(movieInfoEl).append(movieRuntime, listGenre, movieTagline);
+  $(movieInfoEl).append(movieRuntime, listGenre);
+  $(movieTagline).insertAfter('#movie-info h3');
 }
 
 // Event listener on search button
 $('#search-button').on('click', function (e) {
   e.preventDefault();
   const year = $('#search-input').val().trim();
+  let numbers = /^[0-9]+$/;
 
-  // Only run fetchMovie() if #search-input is not empty
+  // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
   if (!year) {
+    console.log('Empty');
+    const errorEmptyYear = $('<p>').addClass('error').text('Please enter YYYY');
+    $('#search-form').append(errorEmptyYear);
     return
-  };
+  } else if (!(year.match(numbers))) {
+      console.log('Not a number!');
+      const errorNan = $('<p>').addClass('error').text('Please enter numbers only');
+      $('#search-form').append(errorNan);
+      return
+  } else if ((year > 2024) || (year < 1900 )) {
+    console.log('Too early or too late');
+    const errorYears = $('<p>').addClass('error').text('Please enter a year between 1900 and 2024');
+      $('#search-form').append(errorYears);
+    return
+  }     
+
   fetchMovie(year);
   addToSearchHistory(year);
 });
