@@ -15,6 +15,7 @@ function fetchMovie(search) {
     })
     .then(function (data) {
       displayMovieInfo(data);
+      getCarouselMovies(data);
       const movieID = data.results[0].id;
       let movieDetailURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${movieApiKey}`;
 
@@ -43,6 +44,7 @@ function displayMovieInfo(data) {
   $(movieInfoEl).append(movieTitle, movieReleaseDate, movieOverview, moviePoster);
 
   getVideo(movie.original_title)
+
 }
 
 // Function to display additional movie data (Runtime, genre, tagline)
@@ -88,7 +90,7 @@ $('#search-button').on('click', function (e) {
   }     
 
   fetchMovie(year);
-  addToSearchHistory(year)
+  addToSearchHistory(year);
 });
 
 
@@ -120,11 +122,12 @@ $('#search-button').on('click', function (e) {
 
 // !User dayjs to format release date
 
-//Second Youtube API variable
-const key = 'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
+
+
 
 
 function getVideo(movie) {
+  $('#youtube-trailer').empty();
   // Youtube API Key
   const key = 'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
   let movieTitle = `${movie} trailer`
@@ -151,10 +154,10 @@ function getVideo(movie) {
 //function to add video to page
 function createFrame(videoId) {
 
-  let srcEl = `http://www.youtube.com/embed/${videoId}?enablejsapi=1`
+  let srcEl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`
   console.log(srcEl)
   let videoFrame = `<iframe id="player" type="text/html" width="640" height="390"
-    src="http://www.youtube.com/embed/${videoId}?enablejsapi=1"
+    src="https://www.youtube.com/embed/${videoId}?enablejsapi=1"
     frameborder="0"></iframe>`
 
   let iFramePlayer = $('#youtube-trailer').html(videoFrame)
@@ -172,7 +175,7 @@ function addToSearchHistory(searchTerm) {
       searchHistory.shift()
   }
   localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-  // updateSearchHistoryDisplay(); 
+  updateSearchHistoryDisplay(); 
 
 }
 
@@ -187,12 +190,37 @@ function updateSearchHistoryDisplay() {
       const pastSearch = searchHistory[i];
       let searchHistoryBtn = $('<button>').text(pastSearch);
       searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
+      searchHistoryBtn.on('click', function () {
+        loadSearchTerm(pastSearch);
+      });
       searchHistoryEl.append(searchHistoryBtn);
   }
 }
 
+function loadSearchTerm(searchTerm) {
+  fetchMovie(searchTerm);
+  addToSearchHistory(searchTerm);
+}
 
 // Call to updateSearchHistoryDisplay on document ready
 $(document).ready(function () {
   updateSearchHistoryDisplay();
 });
+
+function getCarouselMovies(data){
+ for (let i = 1; i <= 3; i++) {
+  const movie = data[i];
+  console.log(movie)
+  console.log('boo')
+ }
+  // const movie = data.results[0];
+  // console.log(`data.results: ${movie}`);
+
+  // const movieTitle = $('<h3>').text(movie.original_title);
+  // const movieReleaseDate = $('<p>').text(dayjs(movie.release_date).format('DD/MM/YYYY'));
+  // const movieOverview = $('<p>').text(movie.overview);
+  // const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`);
+
+  // //Print elements to page
+  // $(movieInfoEl).append(movieTitle, movieReleaseDate, movieOverview, moviePoster);
+}
