@@ -14,7 +14,6 @@ function fetchMovie(search) {
       return response.json(); // Returned data is an array of 20 films sorted by decreasing popularity
     })
     .then(function (data) {
-      console.log(data);
       displayMovieInfo(data);
       const movieID = data.results[0].id;
       let movieDetailURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${movieApiKey}`;
@@ -25,7 +24,6 @@ function fetchMovie(search) {
           return response.json()
         })
         .then(function (movieData) {
-          console.log(movieData);
           extraMovieData(movieData);    
         })
     });
@@ -36,8 +34,6 @@ function displayMovieInfo(data) {
   $(movieInfoEl).empty(); // Remove previous film data from page
 
   const movie = data.results[0];
-  console.log(`data.results: ${movie}`);
-
   const movieTitle = $('<h3>').text(movie.original_title);
   const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
   const movieOverview = $('<p>').text(movie.overview);
@@ -89,8 +85,7 @@ $('#search-button').on('click', function (e) {
     const errorYears = $('<p>').addClass('error').text('Please enter a year between 1900 and 2024');
       $('#search-form').append(errorYears);
     return
-  }    
-  
+  }     
 
   fetchMovie(year);
   addToSearchHistory(year)
