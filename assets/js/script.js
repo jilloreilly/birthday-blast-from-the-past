@@ -16,6 +16,7 @@ function fetchMovie(search) {
     .then(function (data) {
       displayMovieInfo(data);
       getCarouselMovies(data);
+      console.log(data)
       const movieID = data.results[0].id;
       let movieDetailURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${movieApiKey}`;
 
@@ -69,6 +70,7 @@ function extraMovieData(movieData) {
 $('#search-button').on('click', function (e) {
   e.preventDefault();
   const year = $('#search-input').val().trim();
+  const name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
 
   // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
@@ -90,7 +92,7 @@ $('#search-button').on('click', function (e) {
   }     
 
   fetchMovie(year);
-  addToSearchHistory(year);
+  addToSearchHistory({year, name});
 });
 
 
@@ -168,9 +170,9 @@ function createFrame(videoId) {
 // Save search years to local storage -----------------------------------------------------------------------
 
 // Adds search term to local storage
-function addToSearchHistory(searchTerm) {
+function addToSearchHistory(searchTermObj) {
   let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-  searchHistory.push(searchTerm);
+  searchHistory.push(searchTermObj);
   if (searchHistory.length > 10){
       searchHistory.shift()
   }
@@ -188,39 +190,42 @@ function updateSearchHistoryDisplay() {
   //looping through the search history
   for (let i = 0; i < searchHistory.length; i++) {
       const pastSearch = searchHistory[i];
-      let searchHistoryBtn = $('<button>').text(pastSearch);
+      let searchHistoryBtn = $('<button>').text(`Name: ${pastSearch.name || 'N/A'}. Year: ${pastSearch.year}`);
       searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
       searchHistoryBtn.on('click', function () {
-        loadSearchTerm(pastSearch);
+        fetchMovie(pastSearch.year);
       });
       searchHistoryEl.append(searchHistoryBtn);
   }
 }
 
-function loadSearchTerm(searchTerm) {
-  fetchMovie(searchTerm);
-  addToSearchHistory(searchTerm);
-}
 
 // Call to updateSearchHistoryDisplay on document ready
 $(document).ready(function () {
   updateSearchHistoryDisplay();
 });
 
-function getCarouselMovies(data){
- for (let i = 1; i <= 3; i++) {
-  const movie = data[i];
-  console.log(movie)
-  console.log('boo')
- }
-  // const movie = data.results[0];
-  // console.log(`data.results: ${movie}`);
+function getCarouselMovies(data) {
+  // Clear previous carousel items
+  $('.carousel-inner').empty();
 
-  // const movieTitle = $('<h3>').text(movie.original_title);
-  // const movieReleaseDate = $('<p>').text(dayjs(movie.release_date).format('DD/MM/YYYY'));
-  // const movieOverview = $('<p>').text(movie.overview);
-  // const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`);
+  for (let i = 1; i <= 3; i++) {
+      const movieName = data.results[i].original_title;
+      const movieRelease = data.results[i].release_date;
+      const moviePoster = data.results[i].poster_path;
+      const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.results[i].poster_path}`;
 
-  // //Print elements to page
-  // $(movieInfoEl).append(movieTitle, movieReleaseDate, movieOverview, moviePoster);
+      const carouselItem = $('<div>').addClass('carousel-item');
+      if (i === 1) {
+          carouselItem.addClass('active'); // Set the first item as active
+      }
+
+      const img = $('<img>').attr('src', `${movieURL}`).addClass('d-block w-100');
+      const caption = $('<div>').addClass('carousel-caption d-none d-md-block').text(`Name: ${movieName}, Release Date: ${movieRelease}`);
+
+      carouselItem.append(img, caption);
+
+      // Append the created carousel item to the .carousel-inner
+      $('.carousel-inner').append(carouselItem);
+  }
 }
