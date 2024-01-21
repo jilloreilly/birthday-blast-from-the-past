@@ -59,7 +59,7 @@ function extraMovieData(movieData) {
   const genreArr  = movieData.genres;
   const listGenre = $('<ul>');
   const movieQuoteEl = $('<div>').attr('id', 'movie-quote');
-  const movieTagline = $('<blockquote>').text(movieData.tagline).addClass('blockquote text-right');
+  const movieTagline = $('<p>').text(movieData.tagline).addClass('text-right');
   
   for (let i = 0; i < genreArr.length; i++) {
     const movieGenre = $('<li>').text(genreArr[i].name);
@@ -70,7 +70,7 @@ function extraMovieData(movieData) {
   /*$(movieInfoEl).append(movieRuntime, listGenre);*/
   $(movieQuoteEl).append(movieTagline);
   $('#movie-data').append(movieRuntime, listGenre);
-  $(movieQuoteEl).insertAfter('#movie-data');
+  $(movieInfoEl).append(movieQuoteEl);
 }
 
 // Event listener on search button
