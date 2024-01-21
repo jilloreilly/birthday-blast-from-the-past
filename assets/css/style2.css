@@ -1,0 +1,110 @@
+/* Global */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* CSS variables */
+:root {
+  --blue: #4e59c0;
+  --dark: #221c1e;
+  --light: #f9ede3;
+  --green: #1e6157;
+  --yellow: #f5a602;
+}
+
+html {
+  background: #daede2;
+  padding: 5%;
+}
+
+body {
+  background:  var(--light);
+  background: #77c4d3;
+  color: var(--blue);
+  /*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
+  font-family:"tablet-gothic", verdana, arial, sans-serif;
+}
+
+.page-wrapper {
+  z-index: 2;
+  position: relative;
+}
+
+header {
+  text-align: center;
+  padding-top: 5%;
+}
+
+aside {
+  background: rgba(246,247,146,0.9);
+  padding: 5%;
+  /*position: absolute;
+  left: 0;
+  top: 2.5%;
+  width: 32.75%*/
+  min-height: 75%;
+  margin-top: 5em;
+  
+}
+
+div.extra1 {
+  background: rgba(51,55,69,0.9);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 30%;
+  z-index: 1;
+}
+
+h1 {
+  background: #ea2e49;
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+}
+
+h2 {
+  font-size: 4em;
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1em;
+  text-align: center;
+  margin-bottom: .8em;
+}
+
+.overview {
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.5em;
+  pad: 0.5em 0;
+}
+
+/*#movie-data {
+  background: rgba(255,255,255,0.9);
+  color:#333;
+  margin-right: -30%;
+  padding: 5%  30% 5% 5%;
+}*/
+
+#movie-quote {
+  background: rgba(255,255,255,0.9);
+  color:#333;
+  margin-right: -30%;
+  padding: 5%  30% 5% 5%;
+  font-size: 4em;
+}
+
+.movie-poster {
+  width: 300px;
+}
+
+.hide {
+  display: none;
+}
