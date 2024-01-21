@@ -90,17 +90,17 @@ $('#search-button').on('click', function (e) {
   if (!year) {
     console.log('Empty');
     const errorEmptyYear = $('<p>').addClass('error').text('Please enter YYYY');
-    $('#search-form').append(errorEmptyYear);
+    $(errorEmptyYear).insertAfter('#search-input');
     return
   } else if (!(year.match(numbers))) {
       console.log('Not a number!');
       const errorNan = $('<p>').addClass('error').text('Please enter numbers only');
-      $('#search-form').append(errorNan);
+      $(errorNan).insertAfter('#search-input');
       return
   } else if ((year > 2024) || (year < 1900 )) {
     console.log('Too early or too late');
     const errorYears = $('<p>').addClass('error').text('Please enter a year between 1900 and 2024');
-      $('#search-form').append(errorYears);
+      $(errorYears).insertAfter('#search-input');
     return
   }     
 
