@@ -197,7 +197,7 @@ function updateSearchHistoryDisplay() {
   //looping through the search history
   for (let i = 0; i < searchHistory.length; i++) {
       const pastSearch = searchHistory[i];
-      let searchHistoryBtn = $('<button>').text(`Name: ${pastSearch.name || 'N/A'}. Year: ${pastSearch.year}`);
+      let searchHistoryBtn = $('<button>').text(`${pastSearch.name || 'N/A'}, ${pastSearch.year}`);
       searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
       searchHistoryBtn.on('click', function () {
         fetchMovie(pastSearch.year);
@@ -218,7 +218,7 @@ function getCarouselMovies(data) {
 
   for (let i = 1; i <= 3; i++) {
       const movieName = data.results[i].original_title;
-      const movieRelease = data.results[i].release_date;
+      const movieRelease = data.results[i].release_date; 
       const moviePoster = data.results[i].poster_path;
       const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.results[i].poster_path}`;
 
