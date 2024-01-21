@@ -101,10 +101,19 @@ h2 {
   font-size: 4em;
 }
 
-.movie-poster {
+.movie-poster{
   width: 300px;
 }
 
 .hide {
   display: none;
+}
+
+.carousel-poster {
+  /* height: 640px;
+  width: 400px */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

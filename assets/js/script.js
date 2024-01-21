@@ -81,6 +81,8 @@ $('#search-button').on('click', function (e) {
   const name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
 
+  $('#p-tag').addClass('hide')
+
   // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
   if (!year) {
     console.log('Empty');
@@ -198,7 +200,7 @@ function updateSearchHistoryDisplay() {
   //looping through the search history
   for (let i = 0; i < searchHistory.length; i++) {
       const pastSearch = searchHistory[i];
-      let searchHistoryBtn = $('<button>').text(`Name: ${pastSearch.name || 'N/A'}. Year: ${pastSearch.year}`);
+      let searchHistoryBtn = $('<button>').text(`${pastSearch.name || 'N/A'}, ${pastSearch.year}`);
       searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
       searchHistoryBtn.on('click', function () {
         fetchMovie(pastSearch.year);
@@ -211,15 +213,18 @@ function updateSearchHistoryDisplay() {
 // Call to updateSearchHistoryDisplay on document ready
 $(document).ready(function () {
   updateSearchHistoryDisplay();
+  $('#other-films').addClass('hide')
+
 });
 
 function getCarouselMovies(data) {
   // Clear previous carousel items
   $('.carousel-inner').empty();
+  $('#other-films').removeClass('hide')
 
   for (let i = 1; i <= 3; i++) {
       const movieName = data.results[i].original_title;
-      const movieRelease = data.results[i].release_date;
+      const movieRelease = data.results[i].release_date; 
       const moviePoster = data.results[i].poster_path;
       const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.results[i].poster_path}`;
 
@@ -228,8 +233,9 @@ function getCarouselMovies(data) {
           carouselItem.addClass('active'); // Set the first item as active
       }
 
-      const img = $('<img>').attr('src', `${movieURL}`).addClass('d-block w-100');
-      const caption = $('<div>').addClass('carousel-caption d-none d-md-block').text(`Name: ${movieName}, Release Date: ${movieRelease}`);
+      const img = $('<img>').attr('src', `${movieURL}`).addClass('d-block carousel-poster');
+      const caption = $('<div>').addClass('carousel-caption d-none d-md-block').text(`Name: ${movieName}`);
+      // const caption2 = $('<div>').addClass('carousel-caption d-none d-md-block').text(`Release Date: ${movieRelease}`);
 
       carouselItem.append(img, caption);
 
