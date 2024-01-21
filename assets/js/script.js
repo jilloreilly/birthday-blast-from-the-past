@@ -108,39 +108,7 @@ $('#search-button').on('click', function (e) {
   addToSearchHistory({year, name});
 });
 
-
-// JavaScript Todo
-
-// Fetch function for movie data - Jill O
-  // print to page:
-    // Movie title
-    // release date
-    // summary
-    // poster
-
-// May need a 2nd fetch call to the movie API - Jill O
-  // Rating
-  // Genre
-  // Running time
-  // Tagline
-
-// Search form - input validation
-  // check for 4 digits
-  // check if they are numbers/integers
-  // check that year is not greater than 2024
-  // check that year isnt earlier than 115 years ago?
-  // Use regex
-
-// Save search years to local storage - Sarah E
-
-// Save search years to local storage
-
-// !User dayjs to format release date
-
-
-
-
-
+// Function to fetch video from YouTube
 function getVideo(movie) {
   $('#youtube-trailer').empty();
   // Youtube API Key
