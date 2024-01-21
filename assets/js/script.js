@@ -39,11 +39,14 @@ function displayMovieInfo(data) {
   const movieTitle = $('<h2>').text(movie.original_title);
   const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
   const movieOverview = $('<p>').text(movie.overview).addClass('overview');
-  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded movie-poster');
-  const movieDataEl = $('<div>').attr('id', 'movie-data');
+  const addRowEl = $('<div>').addClass('row');
+  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded movie-poster col-lg-6');
+  const movieDataEl = $('<div>').attr('id', 'movie-data').addClass('col-lg-6');
   
   //Print elements to page
-  $(movieInfoEl).append(movieTitle, movieOverview, moviePoster, movieDataEl);
+  $(movieInfoEl).append(movieTitle, movieOverview, addRowEl);
+
+  $(addRowEl).append(moviePoster, movieDataEl);
 
   $(movieDataEl).append(movieReleaseDate);
 
@@ -53,12 +56,11 @@ function displayMovieInfo(data) {
 
 // Function to display additional movie data (Runtime, genre, tagline)
 function extraMovieData(movieData) {
-  //const movieRating = $('<p>').text();  
   const movieRuntime = $('<p>').text(`Runtime: ${movieData.runtime} minutes `);
   const genreArr  = movieData.genres;
   const listGenre = $('<ul>');
   const movieQuoteEl = $('<div>').attr('id', 'movie-quote');
-  const movieTagline = $('<p>').text(movieData.tagline);
+  const movieTagline = $('<blockquote>').text(movieData.tagline).addClass('blockquote text-right');
   
   for (let i = 0; i < genreArr.length; i++) {
     const movieGenre = $('<li>').text(genreArr[i].name);
@@ -68,9 +70,8 @@ function extraMovieData(movieData) {
   // Print elements to page
   /*$(movieInfoEl).append(movieRuntime, listGenre);*/
   $(movieQuoteEl).append(movieTagline);
+  $('#movie-data').append(movieRuntime, listGenre);
   $(movieQuoteEl).insertAfter('#movie-data');
-  $(movieRuntime).insertAfter('#movie-data p');
-  $(listGenre).insertAfter('#movie-data p');
 }
 
 // Event listener on search button
