@@ -8,7 +8,7 @@
 /* CSS variables */
 :root {
   --blue: #4e59c0;
-  --dark: #221c1e;
+  --dark: #201f1f;
   --light: #f9ede3;
   --green: #1e6157;
   --yellow: #f5a602;
@@ -22,7 +22,7 @@ html {
 body {
   background:  var(--light);
   background: #77c4d3;
-  color: var(--blue);
+  color: var(--dark);
   /*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
   font-family:"tablet-gothic", verdana, arial, sans-serif;
 }
@@ -81,9 +81,9 @@ h2 {
   color: #fff;
   font-weight: 900;
   letter-spacing: 1px;
-  line-height: 1em;
+  line-height: 1.2em;
   text-align: center;
-  margin-bottom: .8em;
+  margin-bottom: .5em;
 }
 
 .overview {
@@ -92,7 +92,9 @@ h2 {
   letter-spacing: 2px;
   text-transform: uppercase;
   line-height: 1.5em;
-  pad: 0.5em 0;
+  padding: 0.5em 0;
+  text-align: center;
+  margin-bottom: 2em;
 }
 
 /*#movie-data {

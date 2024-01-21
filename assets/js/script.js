@@ -82,7 +82,7 @@ $('#search-button').on('click', function (e) {
   const yearEl = $('<p>').text(year).addClass('banner');
   $(yearEl).insertAfter('h1');
 
-  $('#p-tag').addClass('hide')
+  $('.p-tag').addClass('hide')
 
   // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
   if (!year) {
