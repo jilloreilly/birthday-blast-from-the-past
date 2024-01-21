@@ -36,13 +36,16 @@ function displayMovieInfo(data) {
   $(movieInfoEl).empty(); // Remove previous film data from page
 
   const movie = data.results[0];
-  const movieTitle = $('<h3>').text(movie.original_title);
+  const movieTitle = $('<h2>').text(movie.original_title);
   const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
-  const movieOverview = $('<p>').text(movie.overview);
-  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded');
-
+  const movieOverview = $('<p>').text(movie.overview).addClass('overview');
+  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded movie-poster');
+  const movieDataEl = $('<div>').attr('id', 'movie-data');
+  
   //Print elements to page
-  $(movieInfoEl).append(movieTitle, movieReleaseDate, movieOverview, moviePoster);
+  $(movieInfoEl).append(movieTitle, movieOverview, moviePoster, movieDataEl);
+
+  $(movieDataEl).append(movieReleaseDate);
 
   getVideo(movie.original_title)
 
@@ -54,6 +57,7 @@ function extraMovieData(movieData) {
   const movieRuntime = $('<p>').text(`Runtime: ${movieData.runtime} minutes `);
   const genreArr  = movieData.genres;
   const listGenre = $('<ul>');
+  const movieQuoteEl = $('<div>').attr('id', 'movie-quote');
   const movieTagline = $('<p>').text(movieData.tagline);
   
   for (let i = 0; i < genreArr.length; i++) {
@@ -62,8 +66,11 @@ function extraMovieData(movieData) {
   }
 
   // Print elements to page
-  $(movieInfoEl).append(movieRuntime, listGenre);
-  $(movieTagline).insertAfter('#movie-info h3');
+  /*$(movieInfoEl).append(movieRuntime, listGenre);*/
+  $(movieQuoteEl).append(movieTagline);
+  $(movieQuoteEl).insertAfter('#movie-data');
+  $(movieRuntime).insertAfter('#movie-data p');
+  $(listGenre).insertAfter('#movie-data p');
 }
 
 // Event listener on search button
