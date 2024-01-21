@@ -37,6 +37,13 @@ header {
   padding-top: 5%;
 }
 
+header .banner {
+  background-color: rgba(246,247,146,0.9);
+  padding: 0.5em 1em;
+  transform: rotate(-6deg);
+  width: 40%;
+}
+
 aside {
   background: rgba(246,247,146,0.9);
   padding: 5%;
@@ -63,7 +70,6 @@ h1 {
   background: #ea2e49;
   color: #fff;
   display: inline-block;
-  margin-bottom: 1em;
   padding: 0.5em 1em;
 }
 
@@ -107,4 +113,8 @@ h2 {
 
 .hide {
   display: none;
+}
+
+footer {
+  background-color: rgba(246,247,146,0.9);
 }

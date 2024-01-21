@@ -16,7 +16,6 @@ function fetchMovie(search) {
     .then(function (data) {
       displayMovieInfo(data);
       getCarouselMovies(data);
-      console.log(data)
       const movieID = data.results[0].id;
       let movieDetailURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${movieApiKey}`;
 
@@ -35,6 +34,8 @@ function fetchMovie(search) {
 function displayMovieInfo(data) {
   $(movieInfoEl).empty(); // Remove previous film data from page
 
+  const year = $('#search-input').val();
+  const yearEl = $('<p>').text(year).addClass('banner');
   const movie = data.results[0];
   const movieTitle = $('<h2>').text(movie.original_title);
   const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
@@ -44,6 +45,8 @@ function displayMovieInfo(data) {
   const movieDataEl = $('<div>').attr('id', 'movie-data').addClass('col-lg-6');
   
   //Print elements to page
+  $('<header>').append(yearEl);
+
   $(movieInfoEl).append(movieTitle, movieOverview, addRowEl);
 
   $(addRowEl).append(moviePoster, movieDataEl);
