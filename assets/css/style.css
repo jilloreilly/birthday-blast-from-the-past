@@ -99,7 +99,7 @@ h2 {
   margin-bottom: .5em;
 }
 
-/*.overview {
+.overview {
   font-weight: 300;
   color: #fff;
   letter-spacing: 2px;
@@ -108,10 +108,9 @@ h2 {
   padding: 0.5em 0;
   text-align: center;
   margin-bottom: 2em;
-}*/
+}
 
 #movie-data {
-  background: rgba(255,255,255,0.9);
   color:#333;
   margin-right: 0%;
   padding: 5%  0% 5% 5%;
@@ -120,7 +119,7 @@ h2 {
 #movie-quote {
   background: rgba(255,255,255,0.9);
   color:#333;
-  margin: 50px -90px 50px 0;
+  margin: 50px;
   padding: 5%  15% 5% 5%;
   font-size: 4em;
   font-family: 'Special Elite', cursive;
@@ -161,6 +160,17 @@ h2 {
   width: 300px;
 }
 
+#youtube-trailer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#carousel-header {
+  align-items: center;
+  justify-content: center;
+}
+
 .hide {
   display: none;
 }
@@ -169,13 +179,15 @@ footer {
   background-color: rgba(246,247,146,0.9);
 }
 .carousel-poster {
-  /* height: 640px;
-  width: 400px */
+  max-width: 20%;
+  max-height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
+
+
 
 h3 {
   background: #ea2e49;
