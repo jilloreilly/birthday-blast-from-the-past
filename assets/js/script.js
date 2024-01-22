@@ -111,7 +111,7 @@ $('#search-button').on('click', function (e) {
   addToSearchHistory({year, name});
 
   $('.banner').remove();
-  const yearEl = $('<p>').text(year).addClass('banner');  
+  const yearEl = $('<p>').text(`The number one movie that came out in ${year} was...`).addClass('banner');  
   $(yearEl).insertAfter('h1');
 
 });
@@ -184,7 +184,7 @@ function updateSearchHistoryDisplay() {
       searchHistoryBtn.on('click', function () {
         fetchMovie(pastSearch.year);
         $('.banner').remove();
-        const yearEl = $('<p>').text(pastSearch.year).addClass('banner');
+        const yearEl = $('<p>').text(`The number one movie that came out in ${pastSearch.year} was...`).addClass('banner');
         $(yearEl).insertAfter('h1');
       });
       searchHistoryEl.append(searchHistoryBtn);
