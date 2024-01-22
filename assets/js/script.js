@@ -43,9 +43,9 @@ function displayMovieInfo(data) {
   const movieDataEl = $('<div>').attr('id', 'movie-data').addClass('col-lg-6');
   
   //Print elements to page
-  $(movieInfoEl).append(movieTitle, movieOverview, addRowEl);
+  $(movieInfoEl).append(movieTitle, moviePoster, movieDataEl, addRowEl);
 
-  $(addRowEl).append(moviePoster, movieDataEl);
+  $(addRowEl).append(movieOverview);
 
   $(movieDataEl).append(movieReleaseDate);
 
