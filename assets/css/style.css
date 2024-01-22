@@ -9,11 +9,12 @@
 
 /* CSS variables */
 :root {
-  --blue: #4e59c0;
+  --blue: #77c4d3;
   --dark: #201f1f;
   --light: #f9ede3;
   --green: #1e6157;
-  --yellow: #f5a602;
+  --yellow: ##f6f792;
+  --red: #ea2e49;
 }
 
 html {
@@ -22,8 +23,7 @@ html {
 }
 
 body {
-  background:  var(--light);
-  background: #77c4d3;
+  background:  var(--blue);
   color: var(--dark);
   /*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
   font-family:"tablet-gothic", verdana, arial, sans-serif;
@@ -36,7 +36,7 @@ body {
 
 header {
   text-align: center;
-  padding-top: 5%;
+  margin-top: -45px;
 }
 
 header .banner {
@@ -44,7 +44,7 @@ header .banner {
   font-size: 1.75em;
   font-weight: bold;
   padding: 0.75em 1em;
-  /*transform: rotate(-6deg);*/
+  transform: rotate(-2deg);
   width: 40%;
   margin-top: -28px;
 }
@@ -128,7 +128,7 @@ h2 {
 #movie-quote p:before,
 #movie-quote p:after {
 	position: absolute;
-	color: #f1efe6;
+	color: var(--red);
 	font-size: 8rem;
 	width: 4rem;
 	height: 4rem;
