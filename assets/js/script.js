@@ -1,6 +1,7 @@
 // Global variables
 const movieApiKey = 'c9b2cb8dde72000677829750b55ceb50';
 const movieInfoEl = $('#movie-info');
+let year;
 
 // Function to fetch movie data from TheMovieDB API based on year searched
 function fetchMovie(search) {
@@ -77,7 +78,7 @@ function extraMovieData(movieData) {
 // Event listener on search button
 $('#search-button').on('click', function (e) {
   e.preventDefault();
-  const year = $('#search-input').val().trim();
+  year = $('#search-input').val().trim();
   const name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
 
@@ -115,14 +116,19 @@ $('#search-button').on('click', function (e) {
   const yearEl = $('<p>').text(`The number one movie that came out in ${year} was...`).addClass('banner');  
   $(yearEl).insertAfter('h1');
 
+
+
 });
+
 
 // Function to fetch video from YouTube
 function getVideo(movie) {
   $('#youtube-trailer').empty();
+  // Year searched
+  console.log(year)
   // Youtube API Key
   const key = 'AIzaSyDKQ8D4nJnvPR-NZX_Qdad6fsdDSctqU9A'
-  let movieTitle = `${movie} trailer`
+  let movieTitle = `${movie} ${year} official trailer`
   // Youtube query url
   let queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${movieTitle}&key=${key}`
   // console.log(queryURL)
@@ -190,6 +196,7 @@ function updateSearchHistoryDisplay() {
         $(yearEl).insertAfter('h1');
       });
       searchHistoryEl.append(searchHistoryBtn);
+
   }
 }
 
