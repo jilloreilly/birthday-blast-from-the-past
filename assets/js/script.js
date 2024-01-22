@@ -16,7 +16,6 @@ function fetchMovie(search) {
     .then(function (data) {
       displayMovieInfo(data);
       getCarouselMovies(data);
-      console.log(data)
       const movieID = data.results[0].id;
       let movieDetailURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${movieApiKey}`;
 
@@ -60,7 +59,7 @@ function extraMovieData(movieData) {
   const genreArr  = movieData.genres;
   const listGenre = $('<ul>');
   const movieQuoteEl = $('<div>').attr('id', 'movie-quote');
-  const movieTagline = $('<blockquote>').text(movieData.tagline).addClass('blockquote text-right');
+  const movieTagline = $('<p>').text(movieData.tagline).addClass('text-right');
   
   for (let i = 0; i < genreArr.length; i++) {
     const movieGenre = $('<li>').text(genreArr[i].name);
@@ -71,7 +70,7 @@ function extraMovieData(movieData) {
   /*$(movieInfoEl).append(movieRuntime, listGenre);*/
   $(movieQuoteEl).append(movieTagline);
   $('#movie-data').append(movieRuntime, listGenre);
-  $(movieQuoteEl).insertAfter('#movie-data');
+  $(movieInfoEl).append(movieQuoteEl);
 }
 
 // Event listener on search button
@@ -80,24 +79,26 @@ $('#search-button').on('click', function (e) {
   const year = $('#search-input').val().trim();
   const name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
+  const yearEl = $('<p>').text(year).addClass('banner');
+  $(yearEl).insertAfter('h1');
 
-  $('#p-tag').addClass('hide')
+  $('.p-tag').addClass('hide')
 
   // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
   if (!year) {
     console.log('Empty');
     const errorEmptyYear = $('<p>').addClass('error').text('Please enter YYYY');
-    $('#search-form').append(errorEmptyYear);
+    $(errorEmptyYear).insertAfter('#search-input');
     return
   } else if (!(year.match(numbers))) {
       console.log('Not a number!');
       const errorNan = $('<p>').addClass('error').text('Please enter numbers only');
-      $('#search-form').append(errorNan);
+      $(errorNan).insertAfter('#search-input');
       return
   } else if ((year > 2024) || (year < 1900 )) {
     console.log('Too early or too late');
     const errorYears = $('<p>').addClass('error').text('Please enter a year between 1900 and 2024');
-      $('#search-form').append(errorYears);
+      $(errorYears).insertAfter('#search-input');
     return
   }     
 
@@ -105,39 +106,7 @@ $('#search-button').on('click', function (e) {
   addToSearchHistory({year, name});
 });
 
-
-// JavaScript Todo
-
-// Fetch function for movie data - Jill O
-  // print to page:
-    // Movie title
-    // release date
-    // summary
-    // poster
-
-// May need a 2nd fetch call to the movie API - Jill O
-  // Rating
-  // Genre
-  // Running time
-  // Tagline
-
-// Search form - input validation
-  // check for 4 digits
-  // check if they are numbers/integers
-  // check that year is not greater than 2024
-  // check that year isnt earlier than 115 years ago?
-  // Use regex
-
-// Save search years to local storage - Sarah E
-
-// Save search years to local storage
-
-// !User dayjs to format release date
-
-
-
-
-
+// Function to fetch video from YouTube
 function getVideo(movie) {
   $('#youtube-trailer').empty();
   // Youtube API Key

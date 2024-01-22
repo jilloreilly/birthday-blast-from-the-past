@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
 /* Global */
 * {
   box-sizing: border-box;
@@ -8,7 +10,7 @@
 /* CSS variables */
 :root {
   --blue: #4e59c0;
-  --dark: #221c1e;
+  --dark: #201f1f;
   --light: #f9ede3;
   --green: #1e6157;
   --yellow: #f5a602;
@@ -22,7 +24,7 @@ html {
 body {
   background:  var(--light);
   background: #77c4d3;
-  color: var(--blue);
+  color: var(--dark);
   /*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
   font-family:"tablet-gothic", verdana, arial, sans-serif;
 }
@@ -35,6 +37,16 @@ body {
 header {
   text-align: center;
   padding-top: 5%;
+}
+
+header .banner {
+  background-color: rgba(246,247,146,0.9);
+  font-size: 1.75em;
+  font-weight: bold;
+  padding: 0.75em 1em;
+  /*transform: rotate(-6deg);*/
+  width: 40%;
+  margin-top: -28px;
 }
 
 aside {
@@ -63,7 +75,6 @@ h1 {
   background: #ea2e49;
   color: #fff;
   display: inline-block;
-  margin-bottom: 1em;
   padding: 0.5em 1em;
 }
 
@@ -72,9 +83,9 @@ h2 {
   color: #fff;
   font-weight: 900;
   letter-spacing: 1px;
-  line-height: 1em;
+  line-height: 1.2em;
   text-align: center;
-  margin-bottom: .8em;
+  margin-bottom: .5em;
 }
 
 .overview {
@@ -83,7 +94,9 @@ h2 {
   letter-spacing: 2px;
   text-transform: uppercase;
   line-height: 1.5em;
-  pad: 0.5em 0;
+  padding: 0.5em 0;
+  text-align: center;
+  margin-bottom: 2em;
 }
 
 /*#movie-data {
@@ -96,9 +109,41 @@ h2 {
 #movie-quote {
   background: rgba(255,255,255,0.9);
   color:#333;
-  margin-right: -60px;
-  padding: 5%  30% 5% 5%;
+  margin: 30px -90px 30px 0;
+  padding: 5%  15% 5% 5%;
   font-size: 4em;
+  font-family: 'Special Elite', cursive;
+}
+
+#movie-quote p {
+  font-weight: 100;
+	font-size: 2rem;
+	max-width: 600px;
+	line-height: 1.4;
+	position: relative;
+	margin: 0;
+	padding: .5rem .5rem .5rem 5.5rem;
+}
+
+#movie-quote p:before,
+#movie-quote p:after {
+	position: absolute;
+	color: #f1efe6;
+	font-size: 8rem;
+	width: 4rem;
+	height: 4rem;
+}
+
+#movie-quote p:before {
+	content: '“';
+	left: -1rem;
+	top: -2rem;
+}
+
+#movie-quote p:after {
+	content: '”';
+	right: -3rem;
+	bottom: 1rem;
 }
 
 .movie-poster{
@@ -109,6 +154,9 @@ h2 {
   display: none;
 }
 
+footer {
+  background-color: rgba(246,247,146,0.9);
+}
 .carousel-poster {
   /* height: 640px;
   width: 400px */
