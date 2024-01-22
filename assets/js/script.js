@@ -79,8 +79,6 @@ $('#search-button').on('click', function (e) {
   const year = $('#search-input').val().trim();
   const name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
-  const yearEl = $('<p>').text(year).addClass('banner');
-  $(yearEl).insertAfter('h1');
 
   $('.p-tag').addClass('hide')
 
@@ -102,8 +100,20 @@ $('#search-button').on('click', function (e) {
     return
   }     
 
+  if (!name) {
+    console.log('Empty');
+    const errorEmptyName = $('<p>').addClass('error').text('Please enter your name');
+    $(errorEmptyName).insertAfter('#name-input');
+    return
+  }   
+
   fetchMovie(year);
   addToSearchHistory({year, name});
+
+  $('.banner').remove();
+  const yearEl = $('<p>').text(year).addClass('banner');  
+  $(yearEl).insertAfter('h1');
+
 });
 
 // Function to fetch video from YouTube
@@ -137,7 +147,7 @@ function createFrame(videoId) {
 
   let srcEl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`
   console.log(srcEl)
-  let videoFrame = `<iframe id="player" type="text/html" width="640" height="390"
+  let videoFrame = `<iframe id="player" type="text/html" width="640" height="390" class='video-frame'
     src="https://www.youtube.com/embed/${videoId}?enablejsapi=1"
     frameborder="0"></iframe>`
 
@@ -173,6 +183,9 @@ function updateSearchHistoryDisplay() {
       searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
       searchHistoryBtn.on('click', function () {
         fetchMovie(pastSearch.year);
+        $('.banner').remove();
+        const yearEl = $('<p>').text(pastSearch.year).addClass('banner');
+        $(yearEl).insertAfter('h1');
       });
       searchHistoryEl.append(searchHistoryBtn);
   }
@@ -189,26 +202,42 @@ $(document).ready(function () {
 function getCarouselMovies(data) {
   // Clear previous carousel items
   $('.carousel-inner').empty();
-  $('#other-films').removeClass('hide')
+  $('#other-films').removeClass('hide');
+  $('#carousel-header').removeClass('hide');
+  $('#youtube-header').removeClass('hide');
+
 
   for (let i = 1; i <= 3; i++) {
-      const movieName = data.results[i].original_title;
-      const movieRelease = data.results[i].release_date; 
-      const moviePoster = data.results[i].poster_path;
-      const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.results[i].poster_path}`;
+    const movieName = data.results[i].original_title;
+    const moviePoster = data.results[i].poster_path;
+    const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.results[i].poster_path}`;
 
-      const carouselItem = $('<div>').addClass('carousel-item');
-      if (i === 1) {
-          carouselItem.addClass('active'); // Set the first item as active
-      }
+    const carouselItem = $('<div>').addClass('carousel-item');
+    if (i === 1) {
+      carouselItem.addClass('active'); // Set the first item as active
+    }
 
-      const img = $('<img>').attr('src', `${movieURL}`).addClass('d-block carousel-poster');
-      const caption = $('<div>').addClass('carousel-caption d-none d-md-block').text(`Name: ${movieName}`);
-      // const caption2 = $('<div>').addClass('carousel-caption d-none d-md-block').text(`Release Date: ${movieRelease}`);
+    const img = $('<img>').attr('src', `${movieURL}`).addClass('d-block carousel-poster');
 
-      carouselItem.append(img, caption);
+    // Create a container div for the caption with the specified color block
+    const captionContainer = $('<div>').addClass('carousel-caption d-none d-md-block')
+      .css({
+        'background-color': '#ea2e49',
+        'width': '40%',          // Set width to 50%
+        'margin': '0 auto',       // Center the container
+        'padding': '2px'
+      });
 
-      // Append the created carousel item to the .carousel-inner
-      $('.carousel-inner').append(carouselItem);
+    // Create a div for the text content (including movie name)
+    const captionText = $('<div>').text(`Movie: ${movieName}`);
+
+    // Append the text div to the caption container
+    captionContainer.append(captionText);
+
+    carouselItem.append(img, captionContainer);
+
+    // Append the created carousel item to the .carousel-inner
+    $('.carousel-inner').append(carouselItem);
   }
 }
+
