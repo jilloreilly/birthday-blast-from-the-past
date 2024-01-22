@@ -44,7 +44,7 @@ header .banner {
   font-size: 1.75em;
   font-weight: bold;
   padding: 0.75em 1em;
-  /*transform: rotate(-6deg);*/
+  transform: rotate(-2deg);
   width: 40%;
   margin-top: -28px;
 }
