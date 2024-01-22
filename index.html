@@ -8,7 +8,7 @@
     rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="./assets/css/style2.css" rel="stylesheet" type="text/css">
+  <link href="./assets/css/style.css" rel="stylesheet" type="text/css">
   <title>Birthday Blast From The Past!</title>
 
   <!-- Add favicons here -->
@@ -26,9 +26,9 @@
             <form id="search-form" class="form">
               <div class="form-inline form-group">
                 <div class="input-group">
-                  <input class="form-input form-control rounded w-100 mb-3" type="text" id="search-input"
+                  <input class="form-input form-control rounded w-100 mb-3 search-input" type="text" id="search-input"
                     placeholder="Enter your birth year" aria-labelledby="form-heading" aria-controls="screen-reader" maxlength="4" />
-                  <input class="form-input form-control rounded w-100" type="text" id="name-input"
+                  <input class="form-input form-control rounded w-100 search-input" type="text" id="name-input"
                     placeholder="Enter your name" />
                   <div class="input-group-append w-100 mt-3">
                     <button type="submit" class="btn search-button btn-primary w-100" id="search-button"
@@ -78,28 +78,36 @@
               <!-- Youtube trailer -->
             </section>
 
-            <section id="other-films">
-              <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+            <section id="other-films" class="py-5 my-2">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 offset-md-4 offset-lg-6">
+                    <h3 id='carousel-header' class="hide">Film Flashbacks: Same Year</h3>
+                  </div>
                 </div>
-                <div class="carousel-inner">
+                <div id="carouselExampleIndicators" class="carousel slide py-3">
+                  <div id="carouselExampleIndicators" class="carousel slide py-5">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
               </div>
             </section>
 

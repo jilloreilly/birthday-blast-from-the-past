@@ -4,21 +4,22 @@
 
 Welcome to Movie Time Capsule! 🎬✨
 
-Movie Time Capsule is a collaborative web application project, brought to you by the creative minds of Lisa Spencer, Jill O'Reilly, Sarah Egleston, and Leone Dale. Together, we've crafted an immersive experience that combines personal information with movie data to create a nostalgic journey through time.
+Movie Time Capsule is a collaborative web application project, brought to you by Lisa Spencer, Jill O'Reilly, Sarah Egleston, and Leone Dale. Together, we've crafted an application that combines personal information with movie data to create a nostalgic journey through time.
 
 ## How it works
 
 1. User Input: Provide your name and year of birth using the user-friendly form on the webpage.
-
+<!-- Insert Photo -->
 2. Movie Data Retrieval: Uses the TheMovieDB API to fetch information about the top movie from the specified birth year. The retrieved data includes the movie's name, release date, and poster.
-
+<!-- Insert Photo -->
 3. Detailed Movie Information: A second API call is made to TheMovieDB API to obtain additional details about the top movie, such as its runtime, genre, and tagline.
-
+<!-- Insert Photo -->
 4. YouTube Trailer Integration: Using the obtained movie data, the application seamlessly embeds a YouTube trailer for the selected movie, allowing you to relive the cinematic experience.
-
+<!-- Insert Photo -->
 5. Carousel of Movie Memories: Lastly to enhance the nostalgic trip, a Bootstrap carousel showcases and additonal three more top movies from the birth year.
 
-![alt text]()
+- [Deployed Link](https://jilloreilly.github.io/birthday-blast-from-the-past)
+- [GitHub Link](https://github.com/jilloreilly/birthday-blast-from-the-past)
 
 ## Technologies Used
 
@@ -33,7 +34,10 @@ Movie Time Capsule is a collaborative web application project, brought to you by
 
 - Chris Katz - TA
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-- [jQuery]()
+- [jQuery](https://api.jquery.com/)
+- [jQuery UI] (https://jqueryui.com/)
+- [YouTube API](https://developers.google.com/youtube/v3)
+- [MovieDB API](https://developer.themoviedb.org/)
 
 ## License
 
