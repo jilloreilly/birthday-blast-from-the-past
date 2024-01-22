@@ -177,7 +177,7 @@ input[type=text] {
   background-color: white;
   background-image: url('../images/icons8-search-20.png');
   background-position: 10px 10px;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
   padding-left: 40px;
 }
 
