@@ -132,25 +132,48 @@ function getVideo(movie) {
   // Year searched
   console.log(year)
   // Youtube API Key
-  const key = 'AIzaSyDKQ8D4nJnvPR-NZX_Qdad6fsdDSctqU9A'
+  const keys = [
+    'AIzaSyDKQ8D4nJnvPR-NZX_Qdad6fsdDSctqU9A',
+    // Add in 3 keys
+  ]
   let movieTitle = `${movie} ${year} official trailer`
+  let keyIndex = 0;
+
+  function fetchVideo() {
+    const key = keys[keyIndex]
   // Youtube query url
   let queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${movieTitle}&key=${key}`
   // console.log(queryURL)
 
   fetch(queryURL)
     .then(function (response) {
-      return response.json()
-    })
-    .then(function (data) {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch: ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(function (data) {
       // console log to ensure correct item selected
       console.log(data)
       // variable to hold the first videos specific video ID
       let videoId = data.items[0].id.videoId
       // const  = $('#card-title').text(`Location: ${data[0].name} (${dayjs().format('MMMM D, YYYY')})`)
       createFrame(videoId)
-    }
-    )
+    })
+    .catch(function (error) {
+      console.error(`Error fetching video: ${error.message}`);
+      // Try next API key if available
+      keyIndex++;
+      if (keyIndex < keys.length) {
+        console.log(`Trying next API key: ${keys[keyIndex]}`);
+        fetchVideo();
+      } else {
+        console.error('All API keys failed. Unable to fetch video.');
+      }
+    });
+}
+
+fetchVideo();
 }
 
 //function to embed video to page
