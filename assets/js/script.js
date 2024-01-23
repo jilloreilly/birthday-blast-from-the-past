@@ -101,7 +101,7 @@ $('#search-button').on('click', function (e) {
       $(errorYears).insertAfter('#search-input');
     return
   }     
-
+  // If name is empty, show message asking to enter
   if (!name) {
     console.log('Empty');
     const errorEmptyName = $('<p>').addClass('error').text('Please enter your name');
@@ -111,9 +111,9 @@ $('#search-button').on('click', function (e) {
 
   fetchMovie(year);
   addToSearchHistory({year, name});
-
+  // Removes year banner 
   $('.banner').remove();
-  const yearEl = $('<p>').text(`The number one movie that came out in ${year} was...`).addClass('banner');  
+  const yearEl = $('<p>').text(`Cinematic Time Capsule: ${year}`).addClass('banner');  
   $(yearEl).insertAfter('h1');
 
 
@@ -148,7 +148,7 @@ function getVideo(movie) {
     )
 }
 
-//function to add video to page
+//function to embed video to page
 function createFrame(videoId) {
 
   let srcEl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`
@@ -184,7 +184,7 @@ function updateSearchHistoryDisplay() {
   let searchHistoryEl = $('#history');
   
   searchHistoryEl.empty();
-  //looping through the search history
+  //looping through the search history and adding to search button area
   for (let i = 0; i < searchHistory.length; i++) {
       const pastSearch = searchHistory[i];
       let searchHistoryBtn = $('<button>').text(`${pastSearch.name || 'N/A'}, ${pastSearch.year}`);
@@ -192,7 +192,7 @@ function updateSearchHistoryDisplay() {
       searchHistoryBtn.on('click', function () {
         fetchMovie(pastSearch.year);
         $('.banner').remove();
-        const yearEl = $('<p>').text(`The number one movie that came out in ${pastSearch.year} was...`).addClass('banner');
+        const yearEl = $('<p>').text(`Cinematic Time Capsule: ${pastSearch.year}`).addClass('banner');
         $(yearEl).insertAfter('h1');
       });
       searchHistoryEl.append(searchHistoryBtn);
@@ -211,28 +211,29 @@ $(document).ready(function () {
 function getCarouselMovies(data) {
   // Clear previous carousel items
   $('.carousel-inner').empty();
+  // Removes hide class - which makes these sections appear
   $('#other-films').removeClass('hide');
   $('#carousel-header').removeClass('hide');
   $('#youtube-header').removeClass('hide');
 
-
+// looping through data obtained by movie api to create carousel with next 3 movies
   for (let i = 1; i <= 3; i++) {
     const movieName = data.results[i].original_title;
     const moviePoster = data.results[i].poster_path;
     const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.results[i].poster_path}`;
-
+    // Creates carousel div
     const carouselItem = $('<div>').addClass('carousel-item');
     if (i === 1) {
       carouselItem.addClass('active'); // Set the first item as active
     }
-
+    // gets carousel poster from API data
     const img = $('<img>').attr('src', `${movieURL}`).addClass('d-block carousel-poster');
 
     // Create a container div for the caption with the specified color block
     const captionContainer = $('<div>').addClass('carousel-caption d-none d-md-block')
       .css({
         'background-color': '#ea2e49',
-        'width': '40%',          // Set width to 50%
+        'width': '50%',          // Set width to 50%
         'margin': '0 auto',       // Center the container
         'padding': '2px'
       });

@@ -35,9 +35,12 @@ Movie Time Capsule is a collaborative web application project, brought to you by
 - Chris Katz - TA
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [jQuery](https://api.jquery.com/)
-- [jQuery UI] (https://jqueryui.com/)
+- [jQuery UI](https://jqueryui.com/)
 - [YouTube API](https://developers.google.com/youtube/v3)
 - [MovieDB API](https://developer.themoviedb.org/)
+- [Icons](https://icons8.com/icons)
+- [Favicon]()
+<!-- Add Favicon source -->
 
 ## License
 
