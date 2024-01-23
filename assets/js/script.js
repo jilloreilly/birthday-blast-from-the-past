@@ -10,6 +10,8 @@ function fetchMovie(search) {
   $('#search-input').val('');
   $('.error').addClass('hide');
 
+  $('.p-tag').addClass('hide')
+
   fetch(queryURL)
     .then(function (response) {
       return response.json(); // Returned data is an array of 20 films sorted by decreasing popularity
@@ -87,7 +89,6 @@ $('#search-button').on('click', function (e) {
   let name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
 
-  $('.p-tag').addClass('hide')
 
   // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
   if (!year) {
@@ -210,21 +211,42 @@ function addToSearchHistory(searchTermObj) {
 function updateSearchHistoryDisplay() {
   let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
   let searchHistoryEl = $('#history');
+  let searchHistoryEl2 = $('#history2');
 
+  // Clear existing search history buttons
   searchHistoryEl.empty();
-  //looping through the search history and adding to search button area
+  searchHistoryEl2.empty();
+
+  // Loop through the search history and add buttons to the search button area
   for (let i = 0; i < searchHistory.length; i++) {
     const pastSearch = searchHistory[i];
-    let searchHistoryBtn = $('<button>').text(`${pastSearch.name || 'N/A'}, ${pastSearch.year}`);
-    searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
-    searchHistoryBtn.on('click', function () {
+
+    // Create separate button elements for searchHistoryEl and searchHistoryEl2
+    let searchHistoryBtn1 = $('<button>').text(`${pastSearch.name || 'N/A'}, ${pastSearch.year}`);
+    let searchHistoryBtn2 = searchHistoryBtn1.clone();
+
+    // Add classes to both buttons
+    searchHistoryBtn1.addClass('search-history-btn btn btn-light mt-2 py-2');
+    searchHistoryBtn2.addClass('search-history-btn btn btn-light mt-2 py-2');
+
+    // Add click event handler to both buttons
+    searchHistoryBtn1.on('click', function () {
       fetchMovie(pastSearch.year);
       $('.banner').remove();
       const yearEl = $('<p>').text(`Cinematic Time Capsule: ${pastSearch.year}`).addClass('banner');
       $(yearEl).insertAfter('h1');
     });
-    searchHistoryEl.append(searchHistoryBtn);
 
+    searchHistoryBtn2.on('click', function () {
+      fetchMovie(pastSearch.year);
+      $('.banner').remove();
+      const yearEl = $('<p>').text(`Cinematic Time Capsule: ${pastSearch.year}`).addClass('banner');
+      $(yearEl).insertAfter('h1');
+    });
+
+    // Append the buttons to searchHistoryEl and searchHistoryEl2
+    searchHistoryEl.append(searchHistoryBtn1);
+    searchHistoryEl2.append(searchHistoryBtn2);
   }
 }
 
