@@ -218,6 +218,46 @@ footer {
   z-index: -1;
 }
 
+/* Media queries */
+@media only screen and (max-width: 1000px) {
+  header {
+    margin-top: 0;
+  }
+  
+  header h1 {
+      font-size: 2em;
+      width: 100%;
+  }
+
+  h2 {
+    font-size: 3em;;
+  }
+
+  .page-wrapper::after {
+    display: none;
+  }
+
+  #movie-quote {
+    margin: 0;
+  }
+
+  #movie-quote p {
+    padding: 5%;
+  }
+
+  #movie-quote p:before {
+    left: -4rem;
+  }
+
+  
+}
+
+@media only screen and (max-width: 768px) {
+  .page-wrapper::after {
+    display: none;
+  }
+}
+
 
 @media (max-width: 992px) {
 

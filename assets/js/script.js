@@ -41,8 +41,8 @@ function displayMovieInfo(data) {
   const movieTitle = $('<h2>').text(movie.original_title);
   const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
   const addRowEl = $('<div>').addClass('row');
-  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded movie-poster col-lg-6');
-  const movieDataEl = $('<div>').attr('id', 'movie-data').addClass('col-lg-6');
+  const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded movie-poster col-lg-6 col-md-6 col-sm-12');
+  const movieDataEl = $('<div>').attr('id', 'movie-data').addClass('col-lg-6 col-md-6 col-sm-12');
 
   //Print elements to page
   $(movieInfoEl).append(movieTitle, addRowEl);
