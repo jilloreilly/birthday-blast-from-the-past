@@ -2,9 +2,9 @@
 
 ## Description
 
-Welcome to Movie Time Capsule! 🎬✨
+Welcome to Birthday Blast from the Past! 🎬✨
 
-Movie Time Capsule is a collaborative web application project, brought to you by Lisa Spencer, Jill O'Reilly, Sarah Egleston, and Leone Dale. Together, we've crafted an application that combines personal information with movie data to create a nostalgic journey through time.
+Birthday Blast from the Past is a collaborative web application project, brought to you by Lisa Spencer, Jill O'Reilly, Sarah Egleston, and Leone Dale. Together, we've crafted an application that combines personal information with movie data to create a nostalgic journey through time.
 
 ## How it works
 
@@ -27,8 +27,8 @@ Movie Time Capsule is a collaborative web application project, brought to you by
 - CSS3: Styling the elements for an appealing user interface.
 - JavaScript (with jQuery): Handling dynamic content, form submission, and API calls.
 - Bootstrap: Creating a responsive and visually appealing carousel.
-- TheMovieDB API: Fetching movie data for a personalized cinematic journey.
-- YouTube Data API: Integrating YouTube trailers for an immersive experience.
+- TheMovieDB API: Fetching movie data.
+- YouTube Data API: Integrating YouTube trailers.
 
 ## Credits
 
