@@ -5,6 +5,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  /*font-family: poppins;*/
 }
 
 /* CSS variables */
@@ -13,20 +14,30 @@
   --dark: #201f1f;
   --light: #f9ede3;
   --green: #1e6157;
-  --yellow: ##f6f792;
+  --yellow: #fbf9be;
   --red: #ea2e49;
 }
 
 html {
-  background: #daede2;
+  background: #baf9f9;
   padding: 5%;
+}
+
+#search-button {
+  background: rgb(238,174,202);
+  background: linear-gradient(90deg, rgba(238,174,202,1) 14%, rgba(148,187,233,1) 100%);
+  border: 2px solid rgb(255, 0, 225);
+  color: rgb(73, 7, 132);
+  font-family: 'Special Elite', cursive;
+  font-size: larger;
 }
 
 body {
   background:  var(--blue);
   color: var(--dark);
   /*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
-  font-family:"tablet-gothic", verdana, arial, sans-serif;
+  /*font-family:"tablet-gothic", verdana, arial, sans-serif;*/
+  font-family: poppins;
 }
 
 .page-wrapper {
@@ -41,16 +52,16 @@ header {
 
 header .banner {
   background-color: rgba(246,247,146,0.9);
-  font-size: 1.75em;
+  font-size: 1.3em;
   font-weight: bold;
   padding: 0.75em 1em;
   transform: rotate(-2deg);
-  width: 40%;
-  margin-top: -28px;
+  /*width: 40%;*/
+  margin-top: -15px;
 }
 
 aside {
-  background: rgba(246,247,146,0.9);
+  background: rgba(251,249,190,0.9);
   padding: 5%;
   /*position: absolute;
   left: 0;
@@ -62,7 +73,7 @@ aside {
 }
 
 div.extra1 {
-  background: rgba(51,55,69,0.9);
+  background: rgba(204,181,240,0.9);
   bottom: 0;
   left: 0;
   position: fixed;
@@ -99,17 +110,16 @@ h2 {
   margin-bottom: 2em;
 }
 
-/*#movie-data {
-  background: rgba(255,255,255,0.9);
+#movie-data {
   color:#333;
-  margin-right: -30%;
-  padding: 5%  30% 5% 5%;
-}*/
+  margin-right: 0%;
+  padding: 5%  0% 5% 5%;
+}
 
 #movie-quote {
   background: rgba(255,255,255,0.9);
   color:#333;
-  margin: 50px -90px 50px 0;
+  margin: 50px;
   padding: 5%  15% 5% 5%;
   font-size: 4em;
   font-family: 'Special Elite', cursive;
@@ -150,6 +160,17 @@ h2 {
   width: 300px;
 }
 
+#youtube-trailer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#carousel-header {
+  align-items: center;
+  justify-content: center;
+}
+
 .hide {
   display: none;
 }
@@ -158,13 +179,15 @@ footer {
   background-color: rgba(246,247,146,0.9);
 }
 .carousel-poster {
-  /* height: 640px;
-  width: 400px */
+  max-width: 20%;
+  max-height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
+
+
 
 h3 {
   background: #ea2e49;
