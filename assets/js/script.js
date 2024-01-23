@@ -72,7 +72,12 @@ function extraMovieData(movieData) {
   /*$(movieInfoEl).append(movieRuntime, listGenre);*/
   $(movieQuoteEl).append(movieTagline);
   $('#movie-data').append(movieRuntime, listGenre);
-  $(movieInfoEl).append(movieQuoteEl);
+  
+  // Only display movie quote if it exists
+  if (movieData.tagline) {
+    $(movieInfoEl).append(movieQuoteEl);  
+  }
+  
 }
 
 // Event listener on search button
