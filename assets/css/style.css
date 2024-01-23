@@ -13,7 +13,7 @@
   --dark: #201f1f;
   --light: #f9ede3;
   --green: #1e6157;
-  --yellow: #fbf9be;
+  --yellow:  rgba(246,247,146,0.9);
   --red: #ea2e49;
 }
 
@@ -47,7 +47,7 @@ header {
 }
 
 header .banner {
-  background-color: rgba(246,247,146,0.9);
+  background-color: var(--yellow);
   font-size: 1.3em;
   font-weight: bold;
   padding: 0.75em 1em;
@@ -58,12 +58,8 @@ header .banner {
 
 /* Sidebar with search form & search history */
 aside {
-  background: rgba(251,249,190,0.9);
+  background-color: var(--yellow);
   padding: 5%;
-  /*position: absolute;
-  left: 0;
-  top: 2.5%;
-  width: 32.75%*/
   min-height: 75%;
   margin-top: 5em; 
 }
@@ -203,9 +199,11 @@ h3 {
 
 /* Footer */
 footer {
-  background-color: rgba(246,247,146,0.9);
+  background-color: var(--yellow);
 }
 
+
+/* Search history accordion */
 .accordion {
   display: none;
 }
@@ -261,11 +259,18 @@ footer {
 @media only screen and (max-width: 1000px) {
   header {
     margin-top: 0;
+    position: absolute;
+    top: -20px;
+    left: 20%;
   }
   
   header h1 {
       font-size: 2em;
       width: 100%;
+  }
+
+  aside {
+    margin-top: 7em;
   }
 
   h2 {
@@ -292,6 +297,15 @@ footer {
 }
 
 @media only screen and (max-width: 768px) {
+  header {
+    top: -20px;
+    left: 0;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+  
   .page-wrapper::after {
     display: none;
   }
