@@ -88,16 +88,6 @@ input[type=text] {
   padding-left: 40px;
 }
 
-div.extra1 {
-  background: rgba(204,181,240,0.9);
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 30%;
-  z-index: 1;
-}
-
 /* Headings */
 h1 {
   background: #ea2e49;
@@ -214,6 +204,18 @@ h3 {
 /* Footer */
 footer {
   background-color: rgba(246,247,146,0.9);
+}
+
+/* Add purple sidebar as pseudo-element as for presentation only */
+.page-wrapper::after {
+  content: '';
+  background: rgba(204,181,240,0.9);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 30%;
+  z-index: -1;
 }
 
 
