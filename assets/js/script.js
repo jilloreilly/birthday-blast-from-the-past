@@ -26,7 +26,7 @@ function fetchMovie(search) {
           return response.json()
         })
         .then(function (movieData) {
-          extraMovieData(movieData);    
+          extraMovieData(movieData);
         })
     });
 }
@@ -43,7 +43,7 @@ function displayMovieInfo(data) {
   const addRowEl = $('<div>').addClass('row');
   const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded movie-poster col-lg-6');
   const movieDataEl = $('<div>').attr('id', 'movie-data').addClass('col-lg-6');
-  
+
   //Print elements to page
   $(movieInfoEl).append(movieTitle, addRowEl);
 
@@ -58,11 +58,11 @@ function displayMovieInfo(data) {
 // Function to display additional movie data (Runtime, genre, tagline)
 function extraMovieData(movieData) {
   const movieRuntime = $('<p>').text(`Runtime: ${movieData.runtime} minutes `);
-  const genreArr  = movieData.genres;
+  const genreArr = movieData.genres;
   const listGenre = $('<ul>');
   const movieQuoteEl = $('<div>').attr('id', 'movie-quote');
   const movieTagline = $('<p>').text(movieData.tagline).addClass('text-right');
-  
+
   for (let i = 0; i < genreArr.length; i++) {
     const movieGenre = $('<li>').text(genreArr[i].name);
     $(listGenre).append(movieGenre);
@@ -72,19 +72,19 @@ function extraMovieData(movieData) {
   /*$(movieInfoEl).append(movieRuntime, listGenre);*/
   $(movieQuoteEl).append(movieTagline);
   $('#movie-data').append(movieRuntime, listGenre);
-  
+
   // Only display movie quote if it exists
   if (movieData.tagline) {
-    $(movieInfoEl).append(movieQuoteEl);  
+    $(movieInfoEl).append(movieQuoteEl);
   }
-  
+
 }
 
 // Event listener on search button
 $('#search-button').on('click', function (e) {
   e.preventDefault();
   year = $('#search-input').val().trim();
-  const name = $('#name-input').val().trim();
+  let name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
 
   $('.p-tag').addClass('hide')
@@ -96,32 +96,32 @@ $('#search-button').on('click', function (e) {
     $(errorEmptyYear).insertAfter('#search-input');
     return
   } else if (!(year.match(numbers))) {
-      console.log('Not a number!');
-      const errorNan = $('<p>').addClass('error').text('Please enter numbers only');
-      $(errorNan).insertAfter('#search-input');
-      return
-  } else if ((year > 2024) || (year < 1900 )) {
+    console.log('Not a number!');
+    const errorNan = $('<p>').addClass('error').text('Please enter numbers only');
+    $(errorNan).insertAfter('#search-input');
+    return
+  } else if ((year > 2024) || (year < 1900)) {
     console.log('Too early or too late');
     const errorYears = $('<p>').addClass('error').text('Please enter a year between 1900 and 2024');
-      $(errorYears).insertAfter('#search-input');
+    $(errorYears).insertAfter('#search-input');
     return
-  }     
+  }
   // If name is empty, show message asking to enter
   if (!name) {
     console.log('Empty');
     const errorEmptyName = $('<p>').addClass('error').text('Please enter your name');
     $(errorEmptyName).insertAfter('#name-input');
     return
-  }   
+  }
 
   fetchMovie(year);
-  addToSearchHistory({year, name});
+  addToSearchHistory({ year, name });
   // Removes year banner 
   $('.banner').remove();
-  const yearEl = $('<p>').text(`Cinematic Time Capsule: ${year}`).addClass('banner');  
+  const yearEl = $('<p>').text(`Cinematic Time Capsule: ${year}`).addClass('banner');
   $(yearEl).insertAfter('h1');
 
-
+  $('#name-input').val('');
 
 });
 
@@ -198,11 +198,11 @@ function createFrame(videoId) {
 function addToSearchHistory(searchTermObj) {
   let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
   searchHistory.push(searchTermObj);
-  if (searchHistory.length > 10){
-      searchHistory.shift()
+  if (searchHistory.length > 10) {
+    searchHistory.shift()
   }
   localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-  updateSearchHistoryDisplay(); 
+  updateSearchHistoryDisplay();
 
 }
 
@@ -210,20 +210,20 @@ function addToSearchHistory(searchTermObj) {
 function updateSearchHistoryDisplay() {
   let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
   let searchHistoryEl = $('#history');
-  
+
   searchHistoryEl.empty();
   //looping through the search history and adding to search button area
   for (let i = 0; i < searchHistory.length; i++) {
-      const pastSearch = searchHistory[i];
-      let searchHistoryBtn = $('<button>').text(`${pastSearch.name || 'N/A'}, ${pastSearch.year}`);
-      searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
-      searchHistoryBtn.on('click', function () {
-        fetchMovie(pastSearch.year);
-        $('.banner').remove();
-        const yearEl = $('<p>').text(`Cinematic Time Capsule: ${pastSearch.year}`).addClass('banner');
-        $(yearEl).insertAfter('h1');
-      });
-      searchHistoryEl.append(searchHistoryBtn);
+    const pastSearch = searchHistory[i];
+    let searchHistoryBtn = $('<button>').text(`${pastSearch.name || 'N/A'}, ${pastSearch.year}`);
+    searchHistoryBtn.addClass('search-history-btn btn btn-light mt-2');
+    searchHistoryBtn.on('click', function () {
+      fetchMovie(pastSearch.year);
+      $('.banner').remove();
+      const yearEl = $('<p>').text(`Cinematic Time Capsule: ${pastSearch.year}`).addClass('banner');
+      $(yearEl).insertAfter('h1');
+    });
+    searchHistoryEl.append(searchHistoryBtn);
 
   }
 }
@@ -244,7 +244,7 @@ function getCarouselMovies(data) {
   $('#carousel-header').removeClass('hide');
   $('#youtube-header').removeClass('hide');
 
-// looping through data obtained by movie api to create carousel with next 3 movies
+  // looping through data obtained by movie api to create carousel with next 3 movies
   for (let i = 1; i <= 3; i++) {
     const movieName = data.results[i].original_title;
     const moviePoster = data.results[i].poster_path;

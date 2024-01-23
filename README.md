@@ -41,6 +41,7 @@ Movie Time Capsule is a collaborative web application project, brought to you by
 - [Icons](https://icons8.com/icons)
 - [Favicon]()
 <!-- Add Favicon source -->
+- [Fetch/Catch API, Odewahn GitHub](https://gist.github.com/odewahn/5a5eeb23279eed6a80d7798fdb47fe91)
 
 ## License
 
