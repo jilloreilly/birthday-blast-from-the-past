@@ -208,10 +208,8 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-
-  display: flex;
-  justify-content: space-between;
   padding: 2em;
+  align-items: center;
 }
 
 .fa {
@@ -220,6 +218,7 @@ footer {
   width: 50px;
   text-align: center;
   text-decoration: none;
+  color: inherit; 
 }
 
 .fa:hover {
