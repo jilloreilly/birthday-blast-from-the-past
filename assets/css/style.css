@@ -38,6 +38,7 @@ body {
 .page-wrapper {
   z-index: 2;
   position: relative;
+  min-height: 100vh;  padding-bottom: 2.5rem; 
 }
 
 /* Header */
@@ -204,6 +205,25 @@ h3 {
 /* Footer */
 footer {
   background-color: rgba(246,247,146,0.9);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.7;
 }
 
 /* Add purple sidebar as pseudo-element as for presentation only */
@@ -217,6 +237,5 @@ footer {
   width: 30%;
   z-index: -1;
 }
-
 
 
