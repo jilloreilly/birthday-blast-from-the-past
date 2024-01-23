@@ -1,6 +1,7 @@
 // Global variables
 const movieApiKey = 'c9b2cb8dde72000677829750b55ceb50';
 const movieInfoEl = $('#movie-info');
+let year;
 
 // Function to fetch movie data from TheMovieDB API based on year searched
 function fetchMovie(search) {
@@ -30,22 +31,23 @@ function fetchMovie(search) {
     });
 }
 
+
 // Function to display movie data
 function displayMovieInfo(data) {
   $(movieInfoEl).empty(); // Remove previous film data from page
 
   const movie = data.results[0];
+  const movieOverview = $('<p>').text(movie.overview).addClass('overview');
   const movieTitle = $('<h2>').text(movie.original_title);
   const movieReleaseDate = $('<p>').text(`Release date: ${dayjs(movie.release_date).format('DD/MM/YYYY')}`);
-  const movieOverview = $('<p>').text(movie.overview).addClass('overview');
   const addRowEl = $('<div>').addClass('row');
   const moviePoster = $('<img>').attr('src', `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`).addClass('rounded movie-poster col-lg-6');
   const movieDataEl = $('<div>').attr('id', 'movie-data').addClass('col-lg-6');
   
   //Print elements to page
-  $(movieInfoEl).append(movieTitle, addRowEl, movieOverview);
+  $(movieInfoEl).append(movieTitle, addRowEl);
 
-  $(addRowEl).append(moviePoster, movieDataEl);
+  $(addRowEl).append(moviePoster, movieDataEl, movieOverview);
 
   $(movieDataEl).append(movieReleaseDate);
 
@@ -76,7 +78,7 @@ function extraMovieData(movieData) {
 // Event listener on search button
 $('#search-button').on('click', function (e) {
   e.preventDefault();
-  const year = $('#search-input').val().trim();
+  year = $('#search-input').val().trim();
   const name = $('#name-input').val().trim();
   let numbers = /^[0-9]+$/;
 
@@ -111,17 +113,22 @@ $('#search-button').on('click', function (e) {
   addToSearchHistory({year, name});
 
   $('.banner').remove();
-  const yearEl = $('<p>').text(year).addClass('banner');  
+  const yearEl = $('<p>').text(`The number one movie that came out in ${year} was...`).addClass('banner');  
   $(yearEl).insertAfter('h1');
 
+
+
 });
+
 
 // Function to fetch video from YouTube
 function getVideo(movie) {
   $('#youtube-trailer').empty();
+  // Year searched
+  console.log(year)
   // Youtube API Key
-  const key = 'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
-  let movieTitle = `${movie} trailer`
+  const key = 'AIzaSyDKQ8D4nJnvPR-NZX_Qdad6fsdDSctqU9A'
+  let movieTitle = `${movie} ${year} official trailer`
   // Youtube query url
   let queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${movieTitle}&key=${key}`
   // console.log(queryURL)
@@ -133,7 +140,6 @@ function getVideo(movie) {
     .then(function (data) {
       // console log to ensure correct item selected
       console.log(data)
-      console.log(`Video Data: ${data.items[0].id.videoId}`);
       // variable to hold the first videos specific video ID
       let videoId = data.items[0].id.videoId
       // const  = $('#card-title').text(`Location: ${data[0].name} (${dayjs().format('MMMM D, YYYY')})`)
@@ -152,6 +158,8 @@ function createFrame(videoId) {
     frameborder="0"></iframe>`
 
   let iFramePlayer = $('#youtube-trailer').html(videoFrame)
+
+  console.log(srcEl);
 }
 
 
@@ -184,10 +192,11 @@ function updateSearchHistoryDisplay() {
       searchHistoryBtn.on('click', function () {
         fetchMovie(pastSearch.year);
         $('.banner').remove();
-        const yearEl = $('<p>').text(pastSearch.year).addClass('banner');
+        const yearEl = $('<p>').text(`The number one movie that came out in ${pastSearch.year} was...`).addClass('banner');
         $(yearEl).insertAfter('h1');
       });
       searchHistoryEl.append(searchHistoryBtn);
+
   }
 }
 
