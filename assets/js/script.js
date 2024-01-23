@@ -135,7 +135,9 @@ function getVideo(movie) {
   // Youtube API Key
   const keys = [
     'AIzaSyDKQ8D4nJnvPR-NZX_Qdad6fsdDSctqU9A',
-    // Add in 3 keys
+    'AIzaSyBDCEP_5ju0W-BGYgqukMuce47hbiEv46c',
+    'AIzaSyDQRIbQCOL42K3X9Tcnlv5zqBEVp1Ih04A',
+    'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
   ]
   let movieTitle = `${movie} ${year} official trailer`
   let keyIndex = 0;
@@ -266,17 +268,18 @@ function getCarouselMovies(data) {
   $('#carousel-header').removeClass('hide');
   $('#youtube-header').removeClass('hide');
 
-  // looping through data obtained by movie api to create carousel with next 3 movies
+  // Loop through data obtained by movie api to create carousel with next 3 movies
   for (let i = 1; i <= 3; i++) {
     const movieName = data.results[i].original_title;
+    const movieYear = data.results[i].release_date.split('-')[0]; // Extracting the year from the release date
     const moviePoster = data.results[i].poster_path;
-    const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${data.results[i].poster_path}`;
+    const movieURL = `https://image.tmdb.org/t/p/w600_and_h900_bestv2${moviePoster}`;
     // Creates carousel div
     const carouselItem = $('<div>').addClass('carousel-item');
     if (i === 1) {
       carouselItem.addClass('active'); // Set the first item as active
     }
-    // gets carousel poster from API data
+    // Gets carousel poster from API data
     const img = $('<img>').attr('src', `${movieURL}`).addClass('d-block carousel-poster');
 
     // Create a container div for the caption with the specified color block
@@ -285,19 +288,26 @@ function getCarouselMovies(data) {
         'background-color': '#ea2e49',
         'width': '50%',          // Set width to 50%
         'margin': '0 auto',       // Center the container
-        'padding': '2px'
+        'padding': '2px',
+        'cursor': 'pointer' // Add cursor pointer for click interaction
       });
 
     // Create a div for the text content (including movie name)
     const captionText = $('<div>').text(`Movie: ${movieName}`);
 
-    // Append the text div to the caption container
     captionContainer.append(captionText);
 
+    // Append the created carousel item to the .carousel-inner
     carouselItem.append(img, captionContainer);
 
     // Append the created carousel item to the .carousel-inner
     $('.carousel-inner').append(carouselItem);
+
+    // Add click event listener to the captionContainer
+    captionContainer.on('click', function () {
+      fetchMovie(movieYear); // Fetch movie based on the clicked poster's year
+    });
   }
 }
+
 
