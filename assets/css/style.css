@@ -401,10 +401,6 @@ footer a:hover {
 }
 
 @media (max-width: 410px) {
-  .video-frame {
-width: 234px;
-height: 142px;
-  }
   aside {
     width: 90%;
   }
