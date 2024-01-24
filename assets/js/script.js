@@ -287,7 +287,6 @@ function getCarouselMovies(data) {
         'width': '50%',          // Set width to 50%
         'margin': '0 auto',       // Center the container
         'padding': '2px',
-        'cursor': 'pointer' // Add cursor pointer for click interaction
       });
 
     // Create a div for the text content (including movie name)
@@ -300,11 +299,6 @@ function getCarouselMovies(data) {
 
     // Append the created carousel item to the .carousel-inner
     $('.carousel-inner').append(carouselItem);
-
-    // Add click event listener to the captionContainer
-    captionContainer.on('click', function () {
-      displayMovieInfo(data); // Fetch movie based on the clicked poster's year
-    });
   }
 }
 
