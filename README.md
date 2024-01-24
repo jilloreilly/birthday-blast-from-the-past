@@ -8,6 +8,9 @@ Birthday Blast from the Past is a collaborative web application project, brought
 
 ## How it works
 
+- [Deployed Link](https://jilloreilly.github.io/birthday-blast-from-the-past)
+- [GitHub Link](https://github.com/jilloreilly/birthday-blast-from-the-past)
+
 1. User Input: Provide your name and year of birth using the user-friendly form on the webpage.
 <!-- Insert Photo -->
 2. Movie Data Retrieval: Uses the TheMovieDB API to fetch information about the top movie from the specified birth year. The retrieved data includes the movie's name, release date, and poster.
@@ -17,9 +20,6 @@ Birthday Blast from the Past is a collaborative web application project, brought
 4. YouTube Trailer Integration: Using the obtained movie data, the application seamlessly embeds a YouTube trailer for the selected movie, allowing you to relive the cinematic experience.
 <!-- Insert Photo -->
 5. Carousel of Movie Memories: Lastly to enhance the nostalgic trip, a Bootstrap carousel showcases and additonal three more top movies from the birth year.
-
-- [Deployed Link](https://jilloreilly.github.io/birthday-blast-from-the-past)
-- [GitHub Link](https://github.com/jilloreilly/birthday-blast-from-the-past)
 
 ## Technologies Used
 
@@ -38,9 +38,7 @@ Birthday Blast from the Past is a collaborative web application project, brought
 - [jQuery UI](https://jqueryui.com/)
 - [YouTube API](https://developers.google.com/youtube/v3)
 - [MovieDB API](https://developer.themoviedb.org/)
-- [Icons](https://icons8.com/icons)
-- [Favicon]()
-<!-- Add Favicon source -->
+- [Icons/Favicon](https://icons8.com/icons)
 - [Fetch/Catch API, Odewahn GitHub](https://gist.github.com/odewahn/5a5eeb23279eed6a80d7798fdb47fe91)
 
 ## License
