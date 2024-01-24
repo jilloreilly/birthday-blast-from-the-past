@@ -187,6 +187,7 @@ h3 {
 #carousel-header {
   align-items: center;
   justify-content: center;
+  text-align: right;
 }
 
 .carousel-poster {
