@@ -13,7 +13,7 @@
   --dark: #201f1f;
   --light: #f9ede3;
   --green: #1e6157;
-  --yellow:  rgba(246,247,146,0.9);
+  --yellow: rgba(246, 247, 146, 0.9);
   --red: #ea2e49;
 }
 
@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  background:  var(--blue);
+  background: var(--blue);
   color: var(--dark);
   font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -58,7 +58,7 @@ aside {
   background-color: var(--yellow);
   padding: 5%;
   min-height: 75%;
-  margin-top: 5em; 
+  margin-top: 5em;
 }
 
 #search-button {
@@ -71,13 +71,15 @@ aside {
   box-shadow: 0 0 20px #eee;
 }
 
-#search-button:hover { --x: 100%; }
+#search-button:hover {
+  --x: 100%;
+}
 
 input[type=text] {
   background-color: white;
   background-image: url('../images/icons8-search-20.png');
   background-position: 10px 10px;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   padding-left: 40px;
 }
 
@@ -112,12 +114,12 @@ h3 {
 
 /* Movie section - Title, Poster image, release date, runtime, genre, overview & quote */
 #movie-data {
-  color:#333;
+  color: #333;
   margin-right: 0;
-  padding: 5%  0% 5% 5%;
+  padding: 5% 0% 5% 5%;
 }
 
-.movie-poster{
+.movie-poster {
   width: 50%;
 }
 
@@ -133,43 +135,43 @@ h3 {
 }
 
 #movie-quote {
-  background: rgba(255,255,255,0.9);
-  color:#333;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
   margin: 10px -90px 50px 0;
-  padding: 5%  15%;
+  padding: 5% 15%;
   font-size: 4em;
   font-family: 'Special Elite', cursive;
 }
 
 #movie-quote p {
   font-weight: 100;
-	font-size: 2rem;
-	max-width: 600px;
-	line-height: 1.4;
-	position: relative;
-	margin: 0;
-	padding: .5rem .5rem .5rem 5.5rem;
+  font-size: 2rem;
+  max-width: 600px;
+  line-height: 1.4;
+  position: relative;
+  margin: 0;
+  padding: .5rem .5rem .5rem 5.5rem;
 }
 
 #movie-quote p:before,
 #movie-quote p:after {
-	position: absolute;
-	color: var(--red);
-	font-size: 8rem;
-	width: 4rem;
-	height: 4rem;
+  position: absolute;
+  color: var(--red);
+  font-size: 8rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 #movie-quote p:before {
-	content: '“';
-	left: -1rem;
-	top: -2rem;
+  content: '“';
+  left: -1rem;
+  top: -2rem;
 }
 
 #movie-quote p:after {
-	content: '”';
-	right: -3rem;
-	bottom: 1rem;
+  content: '”';
+  right: -3rem;
+  bottom: 1rem;
 }
 
 /* YouTube video */
@@ -226,31 +228,36 @@ footer a:hover {
   background: linear-gradient(90deg, var(--c1, #eeaeca), var(--c2, #94bbe9) 51%, var(--c1, #eeaeca)) var(--x, 0)/ 200%;
   padding: 0;
   margin: 0;
-  text-align: right; /* Align text to the right */
+  text-align: right;
+  /* Align text to the right */
   color: rgb(73, 7, 132);
   box-shadow: 0 0 20px #eee;
   font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-  
+
 .accordion-button {
-  padding-left: 10px; /* Adjust the left padding to move the arrow to the left */
-  margin: 0; /* Remove default margin */
+  padding-left: 10px;
+  /* Adjust the left padding to move the arrow to the left */
+  margin: 0;
+  /* Remove default margin */
   padding-right: 20px;
 }
 
 .accordion-item {
-  margin: 0; /* Remove default margin */
+  margin: 0;
+  /* Remove default margin */
 }
 
 .accordion-body {
-  padding: 5px; /* Adjust padding for less space above and below the text */
-  background: rgba(204,181,240,0.9);
+  padding: 5px;
+  /* Adjust padding for less space above and below the text */
+  background: rgba(204, 181, 240, 0.9);
 }
 
 /* Add purple sidebar as pseudo-element as for presentation only */
 .page-wrapper::after {
   content: '';
-  background: rgba(204,181,240,0.9);
+  background: rgba(204, 181, 240, 0.9);
   bottom: 0;
   left: 0;
   position: fixed;
@@ -264,6 +271,7 @@ footer a:hover {
   #history2 {
     display: none;
   }
+
   .accordion {
     display: block !important;
   }
@@ -276,10 +284,10 @@ footer a:hover {
     top: -20px;
     left: 20%;
   }
-  
+
   header h1 {
-      font-size: 2em;
-      width: 100%;
+    font-size: 2em;
+    width: 100%;
   }
 
   aside {
@@ -287,7 +295,8 @@ footer a:hover {
   }
 
   h2 {
-    font-size: 3em;;
+    font-size: 3em;
+    ;
   }
 
   .page-wrapper::after {
@@ -305,7 +314,9 @@ footer a:hover {
   #movie-quote p:before {
     left: -4rem;
   }
-
+  #movie-info {
+    padding: 10px;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -317,7 +328,7 @@ footer a:hover {
   header h1 {
     font-size: 1.5em;
   }
-  
+
   .page-wrapper::after {
     display: none;
   }
@@ -325,6 +336,9 @@ footer a:hover {
   .video-frame {
     width: 448px;
     height: 273px;
+  }
+  #movie-info {
+    padding: 0px;
   }
 }
 
@@ -341,10 +355,56 @@ footer a:hover {
   aside {
     width: 100%;
   }
-  
+
+  .video-frame {
+    width: 403.2px;
+    height: 245.7px;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .video-frame {
+    width: 403.2px;
+    height: 245.7px;
+  }
+}
+
+@media (max-width: 500px) {
+  .video-frame {
+    width: 362px;
+    height: 221px;
+  }
+}
+
+@media (max-width: 450px) {
+  .video-frame {
+    width: 289px;
+    height: 176px;
+  }
+  aside {
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .video-frame {
+    width: 260px;
+    height: 158px;
+  }
+  #youtube-trailer {
+    padding: 0% !important;
+  }
+  aside {
+    width: 90%;
+  }
+}
+
+@media (max-width: 410px) {
+  aside {
+    width: 90%;
+  }
 }
 
 
-@media (max-width: 992px) {
-
-}
+@media (max-width: 992px) {}
