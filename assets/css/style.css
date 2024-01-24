@@ -30,8 +30,6 @@ html {
 body {
   background:  var(--blue);
   color: var(--dark);
-  /*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
-  /*font-family:"tablet-gothic", verdana, arial, sans-serif;*/
   font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -52,7 +50,6 @@ header .banner {
   font-weight: bold;
   padding: 0.75em 1em;
   transform: rotate(-2deg);
-  /*width: 40%;*/
   margin-top: -15px;
 }
 
@@ -84,6 +81,10 @@ input[type=text] {
   padding-left: 40px;
 }
 
+.search-history-btn:hover {
+  background: var(--blue);
+}
+
 /* Headings */
 h1 {
   background: #ea2e49;
@@ -112,12 +113,12 @@ h3 {
 /* Movie section - Title, Poster image, release date, runtime, genre, overview & quote */
 #movie-data {
   color:#333;
-  margin-right: 0%;
+  margin-right: 0;
   padding: 5%  0% 5% 5%;
 }
 
 .movie-poster{
-  width: 400px;
+  width: 50%;
 }
 
 .overview {
