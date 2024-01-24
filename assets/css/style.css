@@ -321,6 +321,30 @@ footer a:hover {
   .page-wrapper::after {
     display: none;
   }
+
+  .video-frame {
+    width: 448px;
+    height: 273px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  header {
+    top: -20px;
+    left: 0;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  aside {
+    width: 100%;
+  }
+  
+  .page-wrapper::after {
+    display: none;
+  }
 }
 
 
