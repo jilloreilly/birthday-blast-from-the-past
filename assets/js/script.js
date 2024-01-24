@@ -130,8 +130,6 @@ $('#search-button').on('click', function (e) {
 // Function to fetch video from YouTube
 function getVideo(movie) {
   $('#youtube-trailer').empty();
-  // Year searched
-  console.log(year)
   // Youtube API Key
   const keys = [
     'AIzaSyDKQ8D4nJnvPR-NZX_Qdad6fsdDSctqU9A',
@@ -139,7 +137,7 @@ function getVideo(movie) {
     'AIzaSyDQRIbQCOL42K3X9Tcnlv5zqBEVp1Ih04A',
     'AIzaSyCRu71YxTn39sybXSy7cLQfoe9oaOvmG5Y'
   ]
-  let movieTitle = `${movie} ${year} official trailer`
+  let movieTitle = `${movie} official trailer`
   let keyIndex = 0;
 
   function fetchVideo() {
@@ -305,7 +303,7 @@ function getCarouselMovies(data) {
 
     // Add click event listener to the captionContainer
     captionContainer.on('click', function () {
-      fetchMovie(movieYear); // Fetch movie based on the clicked poster's year
+      displayMovieInfo(data); // Fetch movie based on the clicked poster's year
     });
   }
 }
