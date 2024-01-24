@@ -9,7 +9,6 @@ function fetchMovie(search) {
 
   $('#search-input').val('');
   $('.error').addClass('hide');
-
   $('.p-tag').addClass('hide')
 
   fetch(queryURL)
@@ -92,24 +91,20 @@ $('#search-button').on('click', function (e) {
 
   // Only run fetchMovie() if #search-input isn't empty, user enters a 4-digit year between 1900 and 2024
   if (!year) {
-    console.log('Empty');
     const errorEmptyYear = $('<p>').addClass('error').text('Please enter YYYY');
     $(errorEmptyYear).insertAfter('#search-input');
     return
   } else if (!(year.match(numbers))) {
-    console.log('Not a number!');
     const errorNan = $('<p>').addClass('error').text('Please enter numbers only');
     $(errorNan).insertAfter('#search-input');
     return
   } else if ((year > 2024) || (year < 1900)) {
-    console.log('Too early or too late');
     const errorYears = $('<p>').addClass('error').text('Please enter a year between 1900 and 2024');
     $(errorYears).insertAfter('#search-input');
     return
   }
   // If name is empty, show message asking to enter
   if (!name) {
-    console.log('Empty');
     const errorEmptyName = $('<p>').addClass('error').text('Please enter your name');
     $(errorEmptyName).insertAfter('#name-input');
     return
@@ -189,8 +184,6 @@ function createFrame(videoId) {
     frameborder="0"></iframe>`
 
   let iFramePlayer = $('#youtube-trailer').html(videoFrame)
-
-  console.log(srcEl);
 }
 
 
