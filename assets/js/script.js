@@ -299,6 +299,8 @@ function getCarouselMovies(data) {
 
     // Append the created carousel item to the .carousel-inner
     $('.carousel-inner').append(carouselItem);
+
+    
   }
 }
 
