@@ -13,7 +13,7 @@
   --dark: #201f1f;
   --light: #f9ede3;
   --green: #1e6157;
-  --yellow: #fbf9be;
+  --yellow:  rgba(246,247,146,0.9);
   --red: #ea2e49;
 }
 
@@ -30,8 +30,6 @@ html {
 body {
   background:  var(--blue);
   color: var(--dark);
-  /*font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
-  /*font-family:"tablet-gothic", verdana, arial, sans-serif;*/
   font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -47,23 +45,18 @@ header {
 }
 
 header .banner {
-  background-color: rgba(246,247,146,0.9);
+  background-color: var(--yellow);
   font-size: 1.3em;
   font-weight: bold;
   padding: 0.75em 1em;
   transform: rotate(-2deg);
-  /*width: 40%;*/
   margin-top: -15px;
 }
 
 /* Sidebar with search form & search history */
 aside {
-  background: rgba(251,249,190,0.9);
+  background-color: var(--yellow);
   padding: 5%;
-  /*position: absolute;
-  left: 0;
-  top: 2.5%;
-  width: 32.75%*/
   min-height: 75%;
   margin-top: 5em; 
 }
@@ -86,6 +79,10 @@ input[type=text] {
   background-position: 10px 10px;
   background-repeat: no-repeat; 
   padding-left: 40px;
+}
+
+.search-history-btn:hover {
+  background: var(--blue);
 }
 
 /* Headings */
@@ -116,12 +113,12 @@ h3 {
 /* Movie section - Title, Poster image, release date, runtime, genre, overview & quote */
 #movie-data {
   color:#333;
-  margin-right: 0%;
+  margin-right: 0;
   padding: 5%  0% 5% 5%;
 }
 
 .movie-poster{
-  width: 400px;
+  width: 50%;
 }
 
 .overview {
@@ -203,9 +200,23 @@ h3 {
 
 /* Footer */
 footer {
-  background-color: rgba(246,247,146,0.9);
+  background-color: var(--yellow);
 }
 
+footer p {
+  margin-bottom: 0;
+}
+
+footer a {
+  color: var(--blue);
+}
+
+footer a:hover {
+  color: #ccb5f0;
+}
+
+
+/* Search history accordion */
 .accordion {
   display: none;
 }
@@ -261,11 +272,18 @@ footer {
 @media only screen and (max-width: 1000px) {
   header {
     margin-top: 0;
+    position: absolute;
+    top: -20px;
+    left: 20%;
   }
   
   header h1 {
       font-size: 2em;
       width: 100%;
+  }
+
+  aside {
+    margin-top: 7em;
   }
 
   h2 {
@@ -292,6 +310,15 @@ footer {
 }
 
 @media only screen and (max-width: 768px) {
+  header {
+    top: -20px;
+    left: 0;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+  
   .page-wrapper::after {
     display: none;
   }
