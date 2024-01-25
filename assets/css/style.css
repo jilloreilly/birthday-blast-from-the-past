@@ -318,6 +318,9 @@ footer a:hover {
   #movie-info {
     padding: 10px;
   }
+  .row {
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -340,6 +343,9 @@ footer a:hover {
   }
   #movie-info {
     padding: 0px;
+  }
+  #movie-data {
+    text-align: center;
   }
 }
 
