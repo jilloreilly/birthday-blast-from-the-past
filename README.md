@@ -42,7 +42,7 @@ Birthday Blast from the Past is a collaborative web application project, brought
 
 ## Credits
 
-- Chris Katz - TA
+- Chris Kratz - TA
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [jQuery](https://api.jquery.com/)
 - [jQuery UI](https://jqueryui.com/)
